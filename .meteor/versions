@@ -6,6 +6,7 @@ binary-heap@1.0.1
 blaze-tools@1.0.1
 blaze@2.0.3
 boilerplate-generator@1.0.1
+bootstrap@1.0.1
 callback-hook@1.0.1
 check@1.0.2
 ctl-helper@1.0.4
@@ -35,6 +36,7 @@ mongo@1.0.8
 observe-sequence@1.0.3
 ordered-dict@1.0.1
 random@1.0.1
+react@0.0.0
 reactive-dict@1.0.4
 reactive-var@1.0.3
 reload@1.1.1
