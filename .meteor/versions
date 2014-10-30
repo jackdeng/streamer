@@ -16,6 +16,7 @@ deps@1.0.5
 ejson@1.0.4
 fastclick@1.0.1
 follower-livedata@1.0.2
+fourseven:scss@0.9.5
 geojson-utils@1.0.1
 html-tools@1.0.2
 htmljs@1.0.2
@@ -41,6 +42,7 @@ reactive-dict@1.0.4
 reactive-var@1.0.3
 reload@1.1.1
 retry@1.0.1
+reywood:bootstrap3-sass@3.2.0_2
 routepolicy@1.0.2
 session@1.0.4
 spacebars-compiler@1.0.3
