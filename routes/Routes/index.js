@@ -4,3 +4,7 @@ Routes = {};
 Routes.main = function() {
 	Views.Stream();	
 }
+
+Routes.login = function() {
+	Views.Login();
+}

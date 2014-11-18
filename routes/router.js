@@ -5,5 +5,10 @@ Router.configure({
 });
 
 Router.route('/', function () {
-	Routes.main();
+	if (Meteor.user()) {
+		Routes.main();
+	}
+	else {
+		Routes.login();
+	}
 });

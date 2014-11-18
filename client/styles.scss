@@ -1,7 +1,13 @@
 body {
-	padding: 50px;	
+	input:focus {
+		outline: none;
+	}
+
+	/* font*/
+	color: grey;
 }
 
+/* Stream */
 .stream {
 	width: 500px;
 	margin: auto;
@@ -9,4 +15,83 @@ body {
 
 .card {
 	padding: 10px;
+}
+
+/* Login */
+.loginOverlay {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);	
+}
+
+.loginBody {
+	position: relative;
+}
+
+#registerFlag {
+	cursor: pointer;
+	margin-left: 20px;
+	margin-top: 5px;
+}
+
+#registerFlag.off {
+	color: lightGrey;
+}
+
+.prismContainer {
+	width:	500px;
+
+	.prism {
+		height: 2em;
+	}
+
+	[data-num="0"] {
+		background: #2FFF62;
+	}
+	[data-num="1"] {
+		background: #60CFFF;
+	}
+	[data-num="2"] {
+		background: #E8CB58;	
+	}
+	[data-num="3"] {
+		background: #FF896D;	
+	}
+	[data-num="4"] {
+		background: #AD58E8;	
+	}
+	[data-num="5"] {
+		background: #E33258;	
+	}
+}
+
+.loginContainer {
+	background: white;
+
+	/** center container within the prismatic background **/
+	position: absolute;	
+	width: 480px;
+	height: 148px;
+	margin: 10px;
+	top: 0px;
+
+	/** evenly spread contents **/
+	display: flex;
+	flex-direction: column;
+	& > .loginEntry {
+		flex: 1;
+	}
+}
+
+.loginEntry {
+	margin: 10px;
+	display: flex;
+	align-items: center;
+
+	input {
+		color: grey;
+		width: 100%;
+		border: none; border-bottom: lightgrey solid 1px;
+	}
 }

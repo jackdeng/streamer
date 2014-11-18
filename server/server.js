@@ -24,9 +24,7 @@ Meteor.methods({
       console.log("results have returned from reddit, inserting into POST");
       populatePostsWithReddit(results);
     });
-
   }
-
 });
 
 var populatePostsWithReddit = function(results) {
