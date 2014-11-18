@@ -27,16 +27,26 @@ body {
 
 .loginBody {
 	position: relative;
+
+	/* prevent body click highlighting on login */
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
 }
 
-#registerFlag {
-	cursor: pointer;
-	margin-left: 20px;
-	margin-top: 5px;
-}
+.loginFooter {
+	margin: 10px 20px;
+	display: flex;
+	justify-content: space-between;
 
-#registerFlag.off {
-	color: lightGrey;
+	#confirmLogin,
+	#registerFlag {
+		cursor: pointer;
+	}
+
+	#registerFlag.off {
+		color: lightGrey;
+	}
 }
 
 .prismContainer {

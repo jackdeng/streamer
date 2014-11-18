@@ -8,24 +8,44 @@ LoginAtom = React.createClass({
 	getMeteorState: function() {
 		return this.state;
 	},
-	showView: function() {
-		return this.state.register ? (<RegisterCard />) : (<LoginCard />) ;
+	chooseLoginView: function() {
+		return this.state.register ? 
+			(<RegisterCard />) : 
+			(<LoginCard />);
 	},
 	handleToggleRegister: function() {
-		console.log("the register flag before is: " + this.state.register);
 		this.setState({
 			"register": !this.state.register
 		});
 	},
 	render: function() {
-		console.log("the register flag after is: " + this.state.register);
 		return (
 			<div className="loginOverlay">
 				<div className="loginBody">
 					<PrismaticBackground />
-					{this.showView()}
-					<RegisterFlag handleToggle={this.handleToggleRegister} registerFlag={this.state.register} />
+					{this.chooseLoginView()}
+					<div className="loginFooter">
+						<RegisterFlag handleToggle={this.handleToggleRegister} registerFlag={this.state.register} />
+						<ConfirmButton registerFlag={this.state.register}/>
+					</div>
 				</div>
+			</div>
+		);
+	}
+});
+
+var ConfirmButton = React.createClass({
+	mixins: [ReactMeteor.Mixin],
+	getInitialState: function() {
+		return {};
+	},
+	getMeteorState: function() {
+		return this.state; 
+	},
+	render: function() {
+		return (
+			<div id="confirmLogin"> 
+				go!
 			</div>
 		);
 	}
@@ -49,9 +69,9 @@ var RegisterFlag = React.createClass({
 			<div className={classes} id="registerFlag" onClick={this.props.handleToggle}> 
 				register
 			</div>
-		)
+		);
 	}
-})
+});
 
 var LoginCard = React.createClass({
 	mixins: [ReactMeteor.Mixin],
