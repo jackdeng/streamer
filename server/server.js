@@ -3,7 +3,7 @@
 // Build out Methods for client ---> server communication.
 
 Meteor.startup(function() {
-  console.log("server has started, erasing temporary Posts collection");
+  console.log("server has started");
 })
 
 Meteor.methods({
