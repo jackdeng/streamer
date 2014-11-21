@@ -4,17 +4,18 @@ body {
 	}
 
 	/* font*/
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	color: grey;
 }
 
 /* Stream */
 .stream {
-	width: 500px;
+	width: 550px;
 	margin: auto;
 }
 
 .card {
-	padding: 10px;
+	padding: 10PX;
 }
 
 /* Login */
@@ -82,7 +83,7 @@ body {
 	/** center container within the prismatic background **/
 	position: absolute;	
 	width: 480px;
-	height: 148px;
+	height: 170px;
 	margin: 10px;
 	top: 0px;
 

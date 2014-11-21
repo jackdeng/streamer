@@ -155,7 +155,7 @@ var PasswordField = React.createClass({
 	},
 	render: function() {
 		return (
-			<div className="loginEntry passwordContainer">
+			<div className="loginEntry passwordContainer list-unstyled">
 				<input type="password" ref="password" placeholder="password"></input>
 			</div>
 		);

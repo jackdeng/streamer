@@ -6,12 +6,10 @@
 meteor-platform
 autopublish
 insecure
-bootstrap
 
 react
 react
-reywood:bootstrap3-sass
 iron:router
 http
 accounts-password
-
+fourseven:scss
