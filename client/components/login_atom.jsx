@@ -45,7 +45,7 @@ var LoginCard = React.createClass({
 		return {};
 	},
 	getMeteorState: function() {
-		return this.state; 
+		return this.state;
 	},
 	getInformation: function() {
 		var info = {
@@ -90,11 +90,11 @@ var ConfirmButton = React.createClass({
 		return {};
 	},
 	getMeteorState: function() {
-		return this.state; 
+		return this.state;
 	},
 	render: function() {
 		return (
-			<div id="confirmLogin" onClick={this.props.submitForm}> 
+			<div id="confirmLogin" onClick={this.props.submitForm}>
 				go!
 			</div>
 		);
@@ -107,7 +107,7 @@ var RegisterFlag = React.createClass({
 		return {};
 	},
 	getMeteorState: function() {
-		return this.state; 
+		return this.state;
 	},
 	render: function() {
 		var classes = "";
@@ -115,7 +115,7 @@ var RegisterFlag = React.createClass({
 			classes += " off"
 		}
 		return (
-			<div className={classes} id="registerFlag" onClick={this.props.handleToggle}> 
+			<div className={classes} id="registerFlag" onClick={this.props.handleToggle}>
 				register
 			</div>
 		);
@@ -156,7 +156,7 @@ var PasswordField = React.createClass({
 	render: function() {
 		return (
 			<div className="loginEntry passwordContainer">
-				<input ref="password" placeholder="password"></input>
+				<input type="password" ref="password" placeholder="password"></input>
 			</div>
 		);
 	}
@@ -177,7 +177,7 @@ var NameField = React.createClass({
 		return this.refs.first.getDOMNode().value.trim();
 	},
 	getFullName: function() {
-		return this.getFirstName() + " " + this.getLastName(); 
+		return this.getFirstName() + " " + this.getLastName();
 	},
 	render: function() {
 		return (
