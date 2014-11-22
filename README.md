@@ -14,7 +14,7 @@
 
 [ ] Complete User system, with loging authentication, credentials, account reset/recovery, history
 
-    [x] Registration
+ [x] Registration
 
     [x] Login
 
