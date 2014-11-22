@@ -10,21 +10,22 @@
 1. > cd streamer/
 2. > meteor run
 
-## Launch Features
-[ ] Complete User system, with loging authentication, credentials, account reset/recovery, history
-	[x] Registration
-	[x] Login
-	[ ] Logout
-[ ] Public Stream
-	[ ] Ranking algo
-[ ] User Stream
-[ ] Filtering
-	[ ] Filter by tags
-	[ ] Filter for Groups
-	[ ] Filter for matched articles and chats
-[ ] Chat
-	[ ] Figure out how many people are in a chat conversation. Who can you talk to?  
-[ ] Plugin integration: functionalities include adding urls, checking user credentials
-[ ] Consistent UI / branding.
-[ ] Performance on browsers.
+## Alpha Launch Features
+
+>[ ] Complete User system, with loging authentication, credentials, account reset/recovery, history
+>	[x] Registration
+>	[x] Login
+>	[ ] Logout
+>[ ] Public Stream
+>	[ ] Ranking algo
+>[ ] User Stream
+>[ ] Filtering
+>	[ ] Filter by tags
+>	[ ] Filter for Groups
+>	[ ] Filter for matched articles and chats
+>[ ] Chat
+>	[ ] Figure out how many people are in a chat conversation. Who can you talk to?  
+>[ ] Plugin integration: functionalities include adding urls, checking user credentials
+>[ ] Consistent UI / branding.
+>[ ] Performance on browsers.
 
