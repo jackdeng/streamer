@@ -15,10 +15,8 @@
 [ ] Complete User system, with loging authentication, credentials, account reset/recovery, history
 
  	[x] Registration
-
-    [x] Login
-
-    [ ] Logout
+	[x] Login
+	[ ] Logout
 
 [ ] Public Stream
 
