@@ -13,18 +13,25 @@
 ## Alpha Launch Features
 
 [ ] Complete User system, with loging authentication, credentials, account reset/recovery, history
+
 	[x] Registration
+
 	[x] Login
+
 	[ ] Logout
+
 [ ] Public Stream
 
 	[ ] Ranking algo
+
 [ ] User Stream
 
 [ ] Filtering
 
 	[ ] Filter by tags
+
 	[ ] Filter for Groups
+
 	[ ] Filter for matched articles and chats
 
 [ ] Chat
