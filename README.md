@@ -10,6 +10,18 @@
 1. > cd streamer/
 2. > meteor run
 
+## Running remotely
+
+live @ streamer.meteor.com
+
+1. deploy: 
+	
+	meteor deploy streamer.meteor.com
+
+2. access db: 
+
+	meteor mongo streamer.meteor.com
+
 ## Alpha Launch Features
 
 [ ] Complete User system, with loging authentication, credentials, account reset/recovery, history
