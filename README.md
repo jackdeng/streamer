@@ -12,7 +12,7 @@
 
 ## Running remotely
 
-live @ streamer.meteor.com
+live @ http://streamer.meteor.com/
 
 1. deploy: 
 	
