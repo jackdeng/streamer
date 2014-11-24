@@ -1,11 +1,7 @@
-// start of server code.
+/** Start of server code **/
+
 
 // Build out Methods for client ---> server communication.
-
-Meteor.startup(function() {
-  console.log("server has started");
-})
-
 Meteor.methods({
   "getRedditHot": function() {
     console.log("starting to get Reddit Hot section");

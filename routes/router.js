@@ -12,3 +12,11 @@ Router.route('/', function () {
 		Routes.login();
 	}
 });
+
+Router.route('/read', {"where": "server"})
+	.post(function() {
+		console.log('***PLUGIN hit POST route!');
+	})
+	.get(function() {
+		console.log("plugin GET route!");
+	})
