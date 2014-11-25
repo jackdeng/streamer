@@ -12,7 +12,7 @@ StreamAtom = React.createClass({
 		var cards = this.state.data.map(function(data) {
 			return (
 				<Card title={data.title} url={data.url}></Card>
-				//<EmbedlyCard url={data.url}></EmbedlyCard>
+				// <EmbedlyCard url={data.url}></EmbedlyCard>
 			);
 		});	
 
@@ -50,7 +50,7 @@ var EmbedlyCard = React.createClass({
 	render: function() {
 		return (
 			<div className='card'>
-				<a href={this.props.url} className="article embedly-card" data-card-chrome="0" ></a>
+				<a href={this.props.url} className="article embedly-card" data-card-chrome="0"></a>
 			</div>
 		);
 	}
