@@ -7,12 +7,10 @@ var constructView = function(constructor) {
 // Stream is the view at path/
 Views.Stream = function() {
 	var getStreamData = function() {
-		Meteor.call("getRedditHot");
-		// find takes two params: selector, options
 		return Posts.find({}, {
 			"limit": 25,
 			"sort": {
-				"created_utc": -1
+				"date": -1
 			}	
 		});
 	};

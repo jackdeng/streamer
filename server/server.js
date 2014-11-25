@@ -1,7 +1,18 @@
 /** Start of server code **/
 
+/** Routes **/
+Router.route('/visit', {"where": "server"}).post(function() {
+  console.log('***!!! PLUGIN hit POST route!');
+  console.log("data header is : " + JSON.stringify(this.request.headers));
+  console.log("data body is : " + JSON.stringify(this.request.body));
+  var data = this.request.body;
 
-// Build out Methods for client ---> server communication.
+  var query = {"url": data.url};
+  Posts.update(query, data, {"upsert": true});
+})
+
+/** Methods **/
+/** In app client----> server methods **/
 Meteor.methods({
   "getRedditHot": function() {
     console.log("starting to get Reddit Hot section");
