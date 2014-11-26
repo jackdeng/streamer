@@ -1,8 +1,7 @@
 Router.route('/', function () {
-	if (Meteor.user()) {
-		Routes.main();
-	}
-	else {
-		Routes.login();
-	}
+	Routes.main();
+});
+
+Router.route('/login', function () {
+	Routes.login();
 });

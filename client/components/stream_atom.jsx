@@ -7,8 +7,13 @@ StreamAtom = React.createClass({
 	getMeteorState: function() {
 		return this.state;
 	},
+	componentWillReceiveProps: function(nextProps) {
+		// reset the data when new data is fetched an sent.
+		this.setState({
+			"data": nextProps.data
+		});
+	},
 	createCards: function() {
-		//var posts = this.parseResults(this.state.data);
 		var cards = this.state.data.map(function(data) {
 			return (
 				<Card title={data.title} url={data.url}></Card>
@@ -19,7 +24,6 @@ StreamAtom = React.createClass({
 		return cards;
 	},
 	render: function() {
-		console.log("rendering streamAtom");
 		return (
 			<div className="stream">
 				{this.createCards()}

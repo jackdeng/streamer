@@ -1,28 +1,31 @@
 Views = {};
 
-var constructView = function(constructor) {
-	Tracker.autorun(constructor);
-}
-
-// Stream is the view at path/
 Views.Stream = function() {
-	var getStreamData = function() {
-		return Posts.find({}, {
+	//TODO: investigate excluding autorun, seems to be reactive without it.
+	Tracker.autorun(function() {
+		// only return 25 most recent metadata
+		var data = Posts.find({}, {
 			"limit": 25,
 			"sort": {
 				"date": -1
-			}	
+			}
+		}).map(function(item) {
+			var metadata = item.metadata || [];
+			return {
+				"title": item.title, 
+				"url": item.url,
+				"user": item.user,
+				"description": metadata.description
+			}
 		});
-	};
-	constructView(function() {
-		var data = getStreamData();
+
 		React.renderComponent(new StreamAtom({ "data": data}), document.body);
 	});
 }
 
 // The Login view
 Views.Login = function() {
-	constructView(function() {
+	Tracker.autorun(function() {
 		React.renderComponent(new LoginAtom(), document.body);
 	});
 }

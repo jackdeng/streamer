@@ -9,28 +9,25 @@ Router.route('/visit', {"where": "server"}).post(function() {
 
   // update Posts
   var query = {"url": data.url};
-  Posts.update(query, data, {"upsert": true});
+  Posts.update(query, data, {"upsert": true}, function(err, doc) {
+    if (err) {
+      console.log("Post update ERROR");
+      return;
+    }
 
-  // update Metadata collection
-  updateMetadata(data);
+    updateMetadata(data);
+  });
 })
 
 var updateMetadata = function(data) {
   var extractBase = 'http://api.embed.ly/1/extract';
   var embedlyKey = "73542b8e014d4fcd80f5d28eae5fb98f";
   var escapedUrl = encodeURIComponent(data.url);
-
-  var params = {
-    "key": embedlyKey,
-    "url": escapedUrl
-  }
-
-  var testURL = extractBase + "?" + "key=" + embedlyKey + "&" + "url=" + escapedUrl;
-  console.log("testURL : " + testURL);
+  var quickEmbedlyURL = extractBase + "?" + "key=" + embedlyKey + "&" + "url=" + escapedUrl;
 
   //TODO: sanitize URLs against bit.ly, addtional params, special params, etc
   //TODO: check metadata for entry before fetch and update from embedly.
-  HTTP.get(testURL, function(err, response) {
+  HTTP.get(quickEmbedlyURL, function(err, response) {
     if (err) {
       console.log("GET from embed.ly failed");
       console.log(JSON.stringify(err));
@@ -38,10 +35,8 @@ var updateMetadata = function(data) {
     }
 
     var results = response.data;
-    console.log("reponse from embedly looks like: " + JSON.stringify(results));
-
-    var query = {"original_url": data.url};
-    Metadata.update(query, results, {"upsert": true});
+    var query = {"url": data.url}
+    Posts.update(query, {$set: {"metadata": results}});
   });
 }
 
