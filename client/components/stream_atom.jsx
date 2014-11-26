@@ -16,7 +16,8 @@ StreamAtom = React.createClass({
 	createCards: function() {
 		var cards = this.state.data.map(function(data) {
 			return (
-				<Card title={data.title} url={data.url}></Card>
+				<EmbelishCard title={data.title} url={data.url} data={data}></EmbelishCard>
+				// <Card title={data.title} url={data.url}></Card>
 				// <EmbedlyCard url={data.url}></EmbedlyCard>
 			);
 		});	
@@ -28,6 +29,36 @@ StreamAtom = React.createClass({
 			<div className="stream">
 				{this.createCards()}
 			</div>	
+		);
+	}
+});
+
+var EmbelishCard = React.createClass({
+	mixins: [ReactMeteor.Mixin],
+	getMeteorState: function() {
+		return this.state;
+	},
+	getImageSource: function() {
+		// <img className="image" src={this.getImageSource()}></img>	
+		var images = this.props.data.images;
+		if (images.length > 0) {
+			var image = images[0];
+			return image.url; 
+		}
+	},
+	getImageDescription: function() {
+		return this.props.data.description;
+	},
+	render: function() {
+		return (
+			<div className='card'>
+				<a className="title" href={this.props.data.url} target="_blank">
+					{this.props.title}
+				</a>
+				<div className="description">
+					{this.getImageDescription()}
+				</div>
+			</div>
 		);
 	}
 });
