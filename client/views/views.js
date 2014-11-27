@@ -16,7 +16,8 @@ Views.Stream = function() {
 				"url": item.url,
 				"user": item.user,
 				"description": metadata.description || "",
-				"images": metadata.images || []
+				"images": metadata.images || [],
+				"media": metadata.media || {}
 			}
 		});
 

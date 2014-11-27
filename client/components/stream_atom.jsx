@@ -53,7 +53,7 @@ var EmbelishCard = React.createClass({
 		return (
 			<div className='embelish card'>
 				<div className="imageContainer">
-					<img className="image" src={this.getImageSource()}></img>	
+						<MediaBlock data={this.props.data}></MediaBlock>
 				</div>
 				<div className="infoBlock">
 					<a className="title" href={this.props.data.url} target="_blank">
@@ -63,6 +63,44 @@ var EmbelishCard = React.createClass({
 						{this.getImageDescription()}
 					</div>
 				</div>
+			</div>
+		);
+	}
+});
+
+var MediaBlock = React.createClass({
+	mixins: [ReactMeteor.Mixin],
+	getMeteorState: function() {
+		return this.state;
+	},
+	getImageSource: function() {
+		var images = this.props.data.images;
+		if (images.length > 0) {
+			var image = images[0];
+			return image.url; 
+		}
+	},
+	insertMedia: function() {
+		// valid
+		if (this.props.data.media.type && this.props.data.media.type != "photo") {
+			var converter = new Showdown.converter();
+			var rawMarkup = converter.makeHtml(this.props.data.media.html);
+			return (
+				<div dangerouslySetInnerHTML={{__html: rawMarkup}} />
+			)
+		}
+		else {
+			return (
+				<a className="title" href={this.props.data.url} target="_blank">
+					<img className="image" src={this.getImageSource()}></img>
+				</a>
+			)
+		}
+	},
+	render: function() {
+		return (
+			<div className= "media">
+				{this.insertMedia()}
 			</div>
 		);
 	}

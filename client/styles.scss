@@ -44,6 +44,11 @@ body {
 		display: block;
 		margin: 0 auto;
 	}
+	.embedly-embed {
+		/* 16:9 aspect ratio */;
+		max-width: 530px;
+		max-height: 298px;
+	}
 	a {
 		display: block;
 	}
