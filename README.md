@@ -29,6 +29,7 @@ live @ http://streamer.meteor.com/
  	[x] Registration
 	[x] Login
 	[ ] Logout
+	[ ] Recovery
 
 [ ] Public Stream
 
@@ -52,3 +53,6 @@ live @ http://streamer.meteor.com/
 
 [ ] Performance on browsers.
 
+[ ] Analytics
+
+[ ] Clean Up (TODOS)
