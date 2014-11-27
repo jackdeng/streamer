@@ -1,10 +1,22 @@
 /* Colors */
 $slightPink: #FF5A65;
+$slightBlue: #00B7FF;
+$deeperBlue: #0075A3;
 
+/* contstants */
+$streamWidth: 550px;
 
 body {
 	input:focus {
 		outline: none;
+	}
+
+	a {
+		color: $slightBlue;
+	}
+
+	a:visited {
+		color: $deeperBlue;
 	}
 
 	/* font*/
@@ -14,12 +26,35 @@ body {
 
 /* Stream */
 .stream {
-	width: 550px;
+	width: $streamWidth;
 	margin: auto;
 }
 
+/* Cards */
+
 .card {
 	padding: 10PX;
+}
+
+.embelish.card {
+	margin: 30px 0px;
+
+	img {
+		max-width: $streamWidth - 20;
+		display: block;
+		margin: 0 auto;
+	}
+	a {
+		display: block;
+	}
+
+	.infoBlock {
+		padding: 10px;
+		
+		.title {
+			margin-bottom: 5px;
+		}
+	}
 }
 
 /* Login */

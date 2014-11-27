@@ -16,7 +16,7 @@ StreamAtom = React.createClass({
 	createCards: function() {
 		var cards = this.state.data.map(function(data) {
 			return (
-				<EmbelishCard title={data.title} url={data.url} data={data}></EmbelishCard>
+				<EmbelishCard data={data}></EmbelishCard>
 				// <Card title={data.title} url={data.url}></Card>
 				// <EmbedlyCard url={data.url}></EmbedlyCard>
 			);
@@ -33,13 +33,13 @@ StreamAtom = React.createClass({
 	}
 });
 
+/** Embished Cards **/
 var EmbelishCard = React.createClass({
 	mixins: [ReactMeteor.Mixin],
 	getMeteorState: function() {
 		return this.state;
 	},
 	getImageSource: function() {
-		// <img className="image" src={this.getImageSource()}></img>	
 		var images = this.props.data.images;
 		if (images.length > 0) {
 			var image = images[0];
@@ -51,32 +51,24 @@ var EmbelishCard = React.createClass({
 	},
 	render: function() {
 		return (
-			<div className='card'>
-				<a className="title" href={this.props.data.url} target="_blank">
-					{this.props.title}
-				</a>
-				<div className="description">
-					{this.getImageDescription()}
+			<div className='embelish card'>
+				<div className="imageContainer">
+					<img className="image" src={this.getImageSource()}></img>	
+				</div>
+				<div className="infoBlock">
+					<a className="title" href={this.props.data.url} target="_blank">
+						{this.props.data.title}
+					</a>
+					<div className="description">
+						{this.getImageDescription()}
+					</div>
 				</div>
 			</div>
 		);
 	}
 });
 
-var Card = React.createClass({
-	mixins: [ReactMeteor.Mixin],
-	getMeteorState: function() {
-		return this.state;
-	},
-	render: function() {
-		return (
-			<div className='card'>
-				<a href={this.props.url} className="article" target='_blank'>{this.props.title}</a>
-			</div>
-		);
-	}
-});
-
+/** Embedly Cards **/
 var EmbedlyCard = React.createClass({
 	mixins: [ReactMeteor.Mixin],
 	getMeteorState: function() {
@@ -86,6 +78,21 @@ var EmbedlyCard = React.createClass({
 		return (
 			<div className='card'>
 				<a href={this.props.url} className="article embedly-card" data-card-chrome="0"></a>
+			</div>
+		);
+	}
+});
+
+/** Basic Cards **/
+var Card = React.createClass({
+	mixins: [ReactMeteor.Mixin],
+	getMeteorState: function() {
+		return this.state;
+	},
+	render: function() {
+		return (
+			<div className='card'>
+				<a href={this.props.url} className="article" target='_blank'>{this.props.title}</a>
 			</div>
 		);
 	}
