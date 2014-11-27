@@ -38,6 +38,7 @@ body {
 
 .embelish.card {
 	margin: 30px 0px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
 
 	img {
 		max-width: $streamWidth - 20;
