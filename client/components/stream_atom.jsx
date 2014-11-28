@@ -46,9 +46,6 @@ var EmbelishCard = React.createClass({
 			return image.url; 
 		}
 	},
-	getImageDescription: function() {
-		return this.props.data.description;
-	},
 	isVertical: function() {
 		var images = this.props.data.images;
 		if (images.length > 0) {
@@ -69,14 +66,7 @@ var EmbelishCard = React.createClass({
 		return (
 			<div className={this.createClassNames()}>
 				<MediaBlock data={this.props.data}></MediaBlock>
-				<div className="infoBlock">
-					<a className="title" href={this.props.data.url} target="_blank">
-						{this.props.data.title}
-					</a>
-					<div className="description">
-						{this.getImageDescription()}
-					</div>
-				</div>
+				<DescriptionBlock data={this.props.data}></DescriptionBlock>
 			</div>
 		);
 	}
@@ -119,6 +109,25 @@ var MediaBlock = React.createClass({
 		);
 	}
 });
+
+var DescriptionBlock = React.createClass({
+	mixins: [ReactMeteor.Mixin], 
+	getMeteorState: function() {
+		return this.state;
+	},
+	render: function() {
+		return (
+			<div className="infoBlock">
+				<a className="title" href={this.props.data.url} target="_blank">
+					{this.props.data.title}
+				</a>
+				<div className="description">
+					{this.props.data.description}
+				</div>
+			</div>
+		);
+	}
+})
 
 /** Embedly Cards **/
 var EmbedlyCard = React.createClass({
