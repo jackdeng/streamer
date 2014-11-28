@@ -40,6 +40,7 @@ var EmbelishCard = React.createClass({
 		return this.state;
 	},
 	isVerticalImage: function() {
+		// TODO: cache the image being used. Not bothering right now, don't want to fuck with states.
 		var images = this.props.data.images;
 		if (images.length > 0) {
 			var image = images[0];
@@ -49,14 +50,35 @@ var EmbelishCard = React.createClass({
 	hasImage: function() {
 		return this.props.data.images.length > 0;
 	},
+	isColumn: function() {
+		// TODO: refactor logic to be simpler.
+		// conditions for card column/row display
+		// column if there's a rich media element
+		// row if there no images and no rich media, display favicon
+		// column if landscape image
+		// row if portrait or square image.
+		var images = this.props.data.images;
+
+		if (this.props.data.media.type && this.props.data.media.type != "photo") {
+			return true;
+		}
+		if (!this.hasImage()) {
+			return false;
+		}
+		if (!this.isVerticalImage()) {
+			return true;
+		}
+		return false;	
+	},
 	createClassNames: function() {
 		var classNames = "embelish card ";
-		if (this.isVerticalImage() || !this.hasImage()) {
+
+		if (this.isColumn()) {
+			classNames += "column ";
+		} else {
 			classNames += "row ";
 		}
-		else {
-			classNames += "column ";
-		}
+
 		return classNames;
 	},
 	render: function() {
