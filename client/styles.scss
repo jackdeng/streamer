@@ -38,7 +38,8 @@ body {
 	margin: 30px 0px;
 }
 
-.embelish.card.sideBySide {
+.embelish.card.row {
+	/* TODO fix row style flex, image should always be native size and text will fill */
 	display: flex;	
 
 	.media {
@@ -50,7 +51,7 @@ body {
 	}
 }
 
-.embelish.card.topToBottom {
+.embelish.card.column {
 	img {
 		max-width: $streamWidth - 20;
 		display: block;

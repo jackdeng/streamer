@@ -52,10 +52,10 @@ var EmbelishCard = React.createClass({
 	createClassNames: function() {
 		var classNames = "embelish card ";
 		if (this.isVerticalImage() || !this.hasImage()) {
-			classNames += "sideBySide ";
+			classNames += "row ";
 		}
 		else {
-			classNames += "topToBottom ";
+			classNames += "column ";
 		}
 		return classNames;
 	},
