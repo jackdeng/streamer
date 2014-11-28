@@ -49,12 +49,26 @@ var EmbelishCard = React.createClass({
 	getImageDescription: function() {
 		return this.props.data.description;
 	},
+	isVertical: function() {
+		var images = this.props.data.images;
+		if (images.length > 0) {
+			var image = images[0];
+			return image.height >= image.width; 
+		}
+	},
+	createClassNames: function() {
+		var classNames = "embelish card ";
+		if (this.isVertical()) {
+			classNames += "vertical";
+		} else {
+			classNames += "horizontal";
+		}
+		return classNames;
+	},
 	render: function() {
 		return (
-			<div className='embelish card'>
-				<div className="imageContainer">
-						<MediaBlock data={this.props.data}></MediaBlock>
-				</div>
+			<div className={this.createClassNames()}>
+				<MediaBlock data={this.props.data}></MediaBlock>
 				<div className="infoBlock">
 					<a className="title" href={this.props.data.url} target="_blank">
 						{this.props.data.title}
