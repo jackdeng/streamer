@@ -34,12 +34,23 @@ body {
 
 .card {
 	padding: 10PX;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	margin: 30px 0px;
 }
 
-.embelish.card {
-	margin: 30px 0px;
-	border: 1px solid rgba(0, 0, 0, 0.1);
+.embelish.card.sideBySide {
+	display: flex;	
 
+	.media {
+		margin-right: 20px;
+
+		img {
+			max-width: 100%;
+		}
+	}
+}
+
+.embelish.card.topToBottom {
 	img {
 		max-width: $streamWidth - 20;
 		display: block;

@@ -10,7 +10,7 @@ StreamAtom = React.createClass({
 	componentWillReceiveProps: function(nextProps) {
 		// reset the data when new data is fetched an sent.
 		this.setState({
-			"data": nextProps.data
+			"data": nextProps.data || {}
 		});
 	},
 	createCards: function() {
@@ -39,26 +39,23 @@ var EmbelishCard = React.createClass({
 	getMeteorState: function() {
 		return this.state;
 	},
-	getImageSource: function() {
+	isVerticalImage: function() {
 		var images = this.props.data.images;
 		if (images.length > 0) {
 			var image = images[0];
-			return image.url; 
+			return (image.height >= image.width) && (image.width < 530); 
 		}
 	},
-	isVertical: function() {
-		var images = this.props.data.images;
-		if (images.length > 0) {
-			var image = images[0];
-			return image.height >= image.width; 
-		}
+	hasImage: function() {
+		return this.props.data.images.length > 0;
 	},
 	createClassNames: function() {
 		var classNames = "embelish card ";
-		if (this.isVertical()) {
-			classNames += "vertical";
-		} else {
-			classNames += "horizontal";
+		if (this.isVerticalImage() || !this.hasImage()) {
+			classNames += "sideBySide ";
+		}
+		else {
+			classNames += "topToBottom ";
 		}
 		return classNames;
 	},
@@ -82,6 +79,8 @@ var MediaBlock = React.createClass({
 		if (images.length > 0) {
 			var image = images[0];
 			return image.url; 
+		} else {
+			return this.props.data.favicon_url;
 		}
 	},
 	insertMedia: function() {
