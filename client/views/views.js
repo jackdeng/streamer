@@ -18,7 +18,8 @@ Views.Stream = function() {
 				"description": metadata.description || "",
 				"images": metadata.images || [],
 				"media": metadata.media || {},
-				"favicon_url": metadata.favicon_url || ""
+				"favicon_url": metadata.favicon_url || "",
+				"provider_url": metadata.provider_url || ""
 			}
 		});
 

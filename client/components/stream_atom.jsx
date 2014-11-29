@@ -84,12 +84,31 @@ var EmbelishCard = React.createClass({
 	render: function() {
 		return (
 			<div className={this.createClassNames()}>
+				<BadgeBlock data={this.props.data}></BadgeBlock>
 				<MediaBlock data={this.props.data}></MediaBlock>
 				<DescriptionBlock data={this.props.data}></DescriptionBlock>
 			</div>
 		);
 	}
 });
+
+var BadgeBlock = React.createClass({
+	mixins: [ReactMeteor.Mixin],
+	getMeteorState: function() {
+		return this.state;
+	},
+	render: function() {
+		return ( 
+			<div className="badges">
+				<div className="favicon">
+					<a href={this.props.data.provider_url} target="_blank">
+						<img src={this.props.data.favicon_url} />
+					</a>
+				</div>
+			</div>
+		);
+	}
+})
 
 var MediaBlock = React.createClass({
 	mixins: [ReactMeteor.Mixin],

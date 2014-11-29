@@ -12,7 +12,7 @@ body {
 	}
 
 	a {
-		color: $slightBlue;
+		color: $deeperBlue;
 	}
 
 	a:visited {
@@ -35,7 +35,18 @@ body {
 .card {
 	padding: 10PX;
 	border: 1px solid rgba(0, 0, 0, 0.1);
-	margin: 30px 0px;
+	margin: 50px 0px;
+	position: relative;
+	
+	.badges {
+		position: absolute;
+		left: 0px;
+		top: -20px;
+
+		img {
+			width: 16px;
+		}
+	}
 
 	.infoBlock {
 		word-wrap: break-word;
@@ -56,11 +67,14 @@ body {
 }
 
 .embelish.card.column {
-	img {
-		max-width: $streamWidth - 20;
-		display: block;
-		margin: 0 auto;
+	.media {
+		img {
+			max-width: $streamWidth - 20;
+			display: block;
+			margin: 0 auto;
+		}
 	}
+	
 	.embedly-embed {
 		/* 16:9 aspect ratio */;
 		max-width: 530px;
