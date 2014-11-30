@@ -83,7 +83,6 @@ var EmbelishCard = React.createClass({
 	render: function() {
 		return (
 			<div className={this.createClassNames()}>
-				<BadgeBlock data={this.props.data}></BadgeBlock>
 				<MediaBlock data={this.props.data}></MediaBlock>
 				<InfoBlock data={this.props.data}></InfoBlock>
 			</div>
@@ -161,7 +160,7 @@ var InfoBlock = React.createClass({
 		// Move validity check to parent. IE, if title is valid, render title to DOM.
 		return (
 			<div className="infoBlock">
-				<CardTitle title={this.props.data.title} url={this.props.data.url} />
+				<CardTitle data={this.props.data} title={this.props.data.title} url={this.props.data.url} />
 				<div className="description">
 					{this.props.data.description}
 				</div>
@@ -202,9 +201,14 @@ var CardTitle = React.createClass({
 
 		if (title) {
 			return (
-				<a className="title" href={this.props.url} target="_blank">
-					{title}
-				</a>
+				<div className="content">
+					<BadgeBlock data={this.props.data}></BadgeBlock>
+					<a className="title" href={this.props.url} target="_blank">
+						<span>
+							{title}
+						</span>
+					</a>
+				</div>
 			)
 		}
 	},
@@ -215,7 +219,7 @@ var CardTitle = React.createClass({
 			</div>
 		);
 	}
-})
+});
 
 /** Embedly Cards **/
 var EmbedlyCard = React.createClass({
