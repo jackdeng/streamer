@@ -17,8 +17,7 @@ StreamAtom = React.createClass({
 		var cards = this.state.data.map(function(data) {
 			return (
 				<EmbelishCard data={data}></EmbelishCard>
-				// <Card title={data.title} url={data.url}></Card>
-				// <EmbedlyCard url={data.url}></EmbedlyCard>
+				// <Chat></Chat> 
 			);
 		});	
 
