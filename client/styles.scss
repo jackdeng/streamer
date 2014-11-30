@@ -51,6 +51,10 @@ body {
 	.infoBlock {
 		word-wrap: break-word;
 
+		.titleContainer {
+				margin-bottom : 5px;
+		}
+
 		.content {
 			display: flex;
 			align-items: flex-start;
