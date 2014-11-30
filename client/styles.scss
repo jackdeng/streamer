@@ -19,6 +19,10 @@ body {
 		color: $deeperBlue;
 	}
 
+	div:empty {
+		display: none;
+	}
+
 	/* font*/
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	color: grey;
@@ -85,12 +89,17 @@ body {
 	}
 
 	.infoBlock {
-		padding: 10px;
-		
 		.title {
 			text-decoration: none;
 			font-size: 1.15em;
+			padding: 0px 10px;
+			padding-top: 10px;
 			margin-bottom: 5px;
+		}
+
+		.description {
+			padding: 0px 10px;
+			padding-bottom: 10px;
 		}
 	}
 }

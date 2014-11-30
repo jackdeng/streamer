@@ -86,7 +86,7 @@ var EmbelishCard = React.createClass({
 			<div className={this.createClassNames()}>
 				<BadgeBlock data={this.props.data}></BadgeBlock>
 				<MediaBlock data={this.props.data}></MediaBlock>
-				<DescriptionBlock data={this.props.data}></DescriptionBlock>
+				<InfoBlock data={this.props.data}></InfoBlock>
 			</div>
 		);
 	}
@@ -127,6 +127,7 @@ var MediaBlock = React.createClass({
 	insertMedia: function() {
 		// valid
 		if (this.props.data.media.type && this.props.data.media.type != "photo") {
+			// TODO prevent XSS attack.
 			var converter = new Showdown.converter();
 			var rawMarkup = converter.makeHtml(this.props.data.media.html);
 			return (
@@ -150,20 +151,68 @@ var MediaBlock = React.createClass({
 	}
 });
 
-var DescriptionBlock = React.createClass({
+var InfoBlock = React.createClass({
 	mixins: [ReactMeteor.Mixin], 
 	getMeteorState: function() {
 		return this.state;
 	},
 	render: function() {
+		// TODO: don't render the HTML at all if it's empty.
+		// Currenly, we're rendering empty block and in style div:empty display:none.
+		// Move validity check to parent. IE, if title is valid, render title to DOM.
 		return (
 			<div className="infoBlock">
-				<a className="title" href={this.props.data.url} target="_blank">
-					{this.props.data.title}
-				</a>
+				<CardTitle title={this.props.data.title} url={this.props.data.url} />
 				<div className="description">
 					{this.props.data.description}
 				</div>
+			</div>
+		);
+	}
+})
+
+var CardTitle = React.createClass({
+	mixins: [ReactMeteor.Mixin],
+	getMeteorState: function() {
+		return this.state;
+	},
+	getTitleText: function() {
+		// check to see if the title would be a generic extension.
+		var title = this.props.title;
+		var extensionMap = [".jpg", ".png", ".gif"];
+		var isExtension = false;
+
+		if (!title) {
+			return;
+		}
+
+		for (var i=0; i < extensionMap.length; i++) {
+			var extension = extensionMap[i];	
+			if (title.indexOf(extension) > 0) {
+				isExtension = true;
+				break;
+			};
+		}
+
+		if (!isExtension) {
+			return title;
+		}
+	},
+	createCardTitle: function() {
+		var title = this.getTitleText();
+
+		if (title) {
+			return (
+				<a className="title" href={this.props.url} target="_blank">
+					{title}
+				</a>
+			)
+		}
+	},
+	render: function() {
+		return (
+			<div className="titleContainer">
+				{this.createCardTitle()}
 			</div>
 		);
 	}
