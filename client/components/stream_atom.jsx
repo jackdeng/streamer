@@ -118,9 +118,7 @@ var MediaBlock = React.createClass({
 		if (images.length > 0) {
 			var image = images[0];
 			return image.url; 
-		} else {
-			return this.props.data.favicon_url;
-		}
+		} 	
 	},
 	insertMedia: function() {
 		// valid
