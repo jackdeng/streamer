@@ -5,7 +5,7 @@ Views.Stream = function() {
 	Tracker.autorun(function() {
 		// only return 25 most recent metadata
 		var data = Posts.find({}, {
-			"limit": 25,
+			"limit": 15,
 			"sort": {
 				"date": -1
 			}
@@ -31,5 +31,11 @@ Views.Stream = function() {
 Views.Login = function() {
 	Tracker.autorun(function() {
 		React.renderComponent(new LoginAtom(), document.body);
+	});
+}
+
+Views.Chat = function() {
+	Tracker.autorun(function() {
+		React.renderComponent(new ChatAtom(), document.body);
 	});
 }

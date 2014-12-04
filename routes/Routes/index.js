@@ -8,3 +8,7 @@ Routes.main = function() {
 Routes.login = function() {
 	Views.Login();
 }
+
+Routes.chat = function() {
+	Views.Chat();
+}

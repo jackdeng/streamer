@@ -1,0 +1,69 @@
+/** 
+- chatBox
+- chatList
+  - chatEntry
+    - chatAuthor
+    - chatMessage
+- chatForm
+  - chatInput
+**/
+
+.chatBox {
+	border: 1px rgba(88, 88, 88, 0.25) solid;	
+	width: 250px;
+}
+
+.chatList {
+	padding: 10px;
+}
+
+.chatEntry {
+	display: flex;
+	margin-bottom: 10px;
+	align-items: center;
+}
+
+.placeholder {
+	height: 40px;
+	width: 40px;
+	flex-shrink: 0;
+}
+
+.chatUser {
+	height: 40px;
+	width: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 20px;
+	color: white;
+	flex-shrink: 0;
+}
+
+.chatUser.self {
+	order: 3;
+}
+
+.chatUser.self~.placeholder {
+	order: -1;
+}
+
+.chatMessage {
+	width: 100%;
+	margin: 0px 10px;
+	word-wrap: break-word;
+}
+
+.chatForm {
+	border-top: 1px rgba(88, 88, 88, 0.25) solid;	
+	padding: 10px;
+}
+
+.chatInput {
+	color: lightgrey;
+	border: none;	
+	width: 100%;
+}
+
+.chatInput:focus {
+	outline: 0;
+}
