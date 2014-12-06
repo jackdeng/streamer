@@ -34,6 +34,24 @@ body {
 	margin: auto;
 }
 
+/* Sleeve */
+
+.sleeve {
+	position: relative;
+}
+
+.chatBox {
+	position: absolute;
+	top: 0px;
+	left: 550px;
+	margin-left: 30px;
+
+	.chatList {
+		max-height: 300px;
+		overflow-y: auto;
+	}
+}
+
 /* Cards */
 
 .card {
