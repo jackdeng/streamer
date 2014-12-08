@@ -18,11 +18,11 @@ StreamAtom = React.createClass({
 			return (
 				<div className="sleeve">
 					<EmbelishCard data={data}></EmbelishCard>
-					<ChatAtom></ChatAtom>
+					<ChatAtom url={data.url}></ChatAtom>
 				</div>
 			);
 		});	
-
+		
 		return cards;
 	},
 	render: function() {

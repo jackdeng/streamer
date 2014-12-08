@@ -17,7 +17,25 @@ Router.route('/visit', {"where": "server"}).post(function() {
 
     updateMetadata(data);
   });
-})
+
+  // new chat for url.
+  var chatRoom = Chat.findOne(query);
+  var newChat = {
+    "url": data.url,
+    "history": []
+  }
+
+  if (!chatRoom) {
+    console.log("no chatroom found: inserting");
+    Chat.insert(newChat, function(err, id) {
+      if (err) {
+        console.log("chat insert gone wrong");
+        return;
+      }
+    }); 
+  }
+
+});
 
 var updateMetadata = function(data) {
   var extractBase = 'http://api.embed.ly/1/extract';

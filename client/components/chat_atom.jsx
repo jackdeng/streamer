@@ -23,6 +23,10 @@ ChatAtom = React.createClass({
   getMeteorState: function() {
     return this.state;
   },
+  // componentDidMount is called automatically when the view is rendered
+  componentDidMount: function() {
+    this.loadCommentsFromServer();
+  },
   loadCommentsFromServer: function() {
     var history = [
       {"user": "Jack Deng", "message": "this is the first comment"},
@@ -44,11 +48,7 @@ ChatAtom = React.createClass({
 
     this.displayComment(comment);
   },
-  // componentDidMount is called automatically when the view is rendered
-  componentDidMount: function() {
-    this.loadCommentsFromServer();
-  },
-  render : function() {
+  render: function() {
     return  (
       <div className="chatBox">
         <ChatList data={this.state.data} />
