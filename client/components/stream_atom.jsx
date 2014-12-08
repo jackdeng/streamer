@@ -13,6 +13,12 @@ StreamAtom = React.createClass({
 			"data": nextProps.data || {}
 		});
 	},
+	getChatCollection: function(url) {
+		var query = {
+			"url": url
+		};
+		return Chat.findOne(query);
+	},
 	createCards: function() {
 		var cards = this.state.data.map(function(data) {
 			return (
@@ -22,7 +28,7 @@ StreamAtom = React.createClass({
 				</div>
 			);
 		});	
-		
+
 		return cards;
 	},
 	render: function() {

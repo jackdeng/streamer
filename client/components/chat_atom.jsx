@@ -18,26 +18,44 @@ ChatAtom = React.createClass({
     // getInitialState executes exactly ONCE during the lifetime of
     // the component and setsup the initial state of the component.
     // TODO: get chat history here?
-    return {data: []};
+    console.log("this props: " + JSON.stringify(this.props));
+    return {
+      data: this.getChatRoom().history
+    };
   },
   getMeteorState: function() {
     return this.state;
   },
-  // componentDidMount is called automatically when the view is rendered
-  componentDidMount: function() {
-    this.loadCommentsFromServer();
-  },
-  loadCommentsFromServer: function() {
-    var history = [
-      {"user": "Jack Deng", "message": "this is the first comment"},
-      {"user": "Reid Hoffman", "message": "this is *the* test"}];
-
-    this.setState({"data": history});
+  getChatRoom: function() {
+    var query = {
+      "url": this.props.url
+    }
+    return Chat.findOne(query); 
   },
   displayComment: function(comment) {
     var comments = this.state.data;
     var newComments = comments.concat([comment]);
+  },
+  updateChat: function(comment) {
+    // TODO: figure out how to render when the collection is updated, 
+    // as not to update state ourselves.
+    var query = {
+      "url": this.props.url
+    }
+
+    var comments = this.state.data;
+    var newComments = comments.concat([comment]);
+
+    // optimistically display the chat message in client
     this.setState({"data": newComments});
+
+    // update the chat collection.
+    var options = {
+      "query": query,
+      "comments" : newComments
+    }
+
+    Meteor.call("updateChat", options);
   },
   handleCommentSubmit: function(comment) {
     var chatEntry = {
@@ -46,7 +64,7 @@ ChatAtom = React.createClass({
       message: comment.message
     }
 
-    this.displayComment(comment);
+    this.updateChat(comment);
   },
   render: function() {
     return  (

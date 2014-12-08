@@ -61,22 +61,11 @@ var updateMetadata = function(data) {
 /** Methods **/
 /** In app client----> server methods **/
 Meteor.methods({
-  "getRedditHot": function() {
-    console.log("starting to get Reddit Hot section");
-
-    redditOptions = {
-      "limit": 30 
-    }
-
-    HTTP.get("http://reddit.com/hot.json", redditOptions, function(err, response) {
-      if (err) {
-        console.log("error in fetchign from hot hot reddit");
-        return;
+  "updateChat": function(options) {
+    Chat.update(options.query, {
+      "$set": {
+        "history": options.comments
       }
-
-      var results = JSON.parse(response.content).data.children;
-      console.log("results have returned from reddit, inserting into POST");
-      populatePostsWithReddit(results);
     });
   }
 });
