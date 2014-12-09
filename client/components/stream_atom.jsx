@@ -13,21 +13,23 @@ StreamAtom = React.createClass({
 			"data": nextProps.data || {}
 		});
 	},
-	getChatCollection: function(url) {
-		var query = {
+	getChatRoom: function(url) {
+		query = {
 			"url": url
-		};
+		}
+
 		return Chat.findOne(query);
 	},
 	createCards: function() {
 		var cards = this.state.data.map(function(data) {
+			var chatRoom = this.getChatRoom(data.url);
 			return (
 				<div className="sleeve">
 					<EmbelishCard data={data}></EmbelishCard>
-					<ChatAtom url={data.url}></ChatAtom>
+					<ChatAtom url={data.url} chatRoom={chatRoom}></ChatAtom>
 				</div>
-			);
-		});	
+			)
+		}, this);	
 
 		return cards;
 	},

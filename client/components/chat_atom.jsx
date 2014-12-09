@@ -15,26 +15,17 @@
 ChatAtom = React.createClass({
   mixins: [ReactMeteor.Mixin],
   getInitialState: function() {
-    // getInitialState executes exactly ONCE during the lifetime of
-    // the component and setsup the initial state of the component.
-    // TODO: get chat history here?
-    console.log("this props: " + JSON.stringify(this.props));
     return {
-      data: this.getChatRoom().history
+      data: this.props.chatRoom.history
     };
   },
   getMeteorState: function() {
     return this.state;
   },
-  getChatRoom: function() {
-    var query = {
-      "url": this.props.url
-    }
-    return Chat.findOne(query); 
-  },
-  displayComment: function(comment) {
-    var comments = this.state.data;
-    var newComments = comments.concat([comment]);
+  componentWillReceiveProps: function(nextProps) {
+    this.setState({
+      data: nextProps.chatRoom.history
+    });
   },
   updateChat: function(comment) {
     // TODO: figure out how to render when the collection is updated, 
@@ -47,7 +38,7 @@ ChatAtom = React.createClass({
     var newComments = comments.concat([comment]);
 
     // optimistically display the chat message in client
-    this.setState({"data": newComments});
+    //this.setState({"data": newComments});
 
     // update the chat collection.
     var options = {
@@ -57,20 +48,11 @@ ChatAtom = React.createClass({
 
     Meteor.call("updateChat", options);
   },
-  handleCommentSubmit: function(comment) {
-    var chatEntry = {
-      url: this.props.url,
-      user: comment.user,
-      message: comment.message
-    }
-
-    this.updateChat(comment);
-  },
   render: function() {
     return  (
       <div className="chatBox">
         <ChatList data={this.state.data} />
-        <ChatForm onCommentSubmit={this.handleCommentSubmit} />
+        <ChatForm onCommentSubmit={this.updateChat} />
       </div>
     );
   }
