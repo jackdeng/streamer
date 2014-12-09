@@ -27,7 +27,6 @@ LoginAtom = React.createClass({
 		return (
 			<div className="loginOverlay">
 				<div className="loginBody">
-					<PrismaticBackground />
 					<LoginCard ref="loginForm" registerFlag={this.state.register} />
 					<div className="loginFooter">
 						<RegisterFlag handleToggle={this.handleToggleRegister} registerFlag={this.state.register} />

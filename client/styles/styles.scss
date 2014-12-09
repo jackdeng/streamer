@@ -147,7 +147,8 @@ body {
 }
 
 .loginBody {
-	position: relative;
+	width: 550px;
+	padding: 10px;
 
 	/* prevent body click highlighting on login */
 	-webkit-user-select: none; /* Chrome/Safari */        
@@ -156,7 +157,7 @@ body {
 }
 
 .loginFooter {
-	margin: 10px 20px;
+	margin: 10px 25px;
 	display: flex;
 	justify-content: space-between;
 
@@ -174,7 +175,7 @@ body {
 	width:	500px;
 
 	.prism {
-		height: 2em;
+		height: 20px;
 	}
 
 	[data-num="0"] {
@@ -199,13 +200,6 @@ body {
 
 .loginContainer {
 	background: white;
-
-	/** center container within the prismatic background **/
-	position: absolute;	
-	width: 480px;
-	height: 170px;
-	margin: 10px;
-	top: 0px;
 
 	/** evenly spread contents **/
 	display: flex;
