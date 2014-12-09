@@ -16,16 +16,18 @@ ChatAtom = React.createClass({
   mixins: [ReactMeteor.Mixin],
   getInitialState: function() {
     return {
-      data: this.props.chatRoom.history
+      data: [] 
     };
   },
   getMeteorState: function() {
     return this.state;
   },
   componentWillReceiveProps: function(nextProps) {
-    this.setState({
-      data: nextProps.chatRoom.history
-    });
+    if (nextProps.chatRoom) {
+      this.setState({
+        data: nextProps.chatRoom.history
+      });
+    }
   },
   updateChat: function(comment) {
     // TODO: figure out how to render when the collection is updated, 
