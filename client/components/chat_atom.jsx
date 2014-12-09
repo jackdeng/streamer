@@ -49,6 +49,7 @@ ChatAtom = React.createClass({
     Meteor.call("updateChat", options);
   },
   render: function() {
+    // TODO! Use this.props.chatRoom.history or this.state.data?
     return  (
       <div className="chatBox">
         <ChatList data={this.state.data} />
