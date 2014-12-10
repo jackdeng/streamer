@@ -55,7 +55,7 @@ var LoginCard = React.createClass({
 		// if we are registering, include the users' names.
 		if (this.props.registerFlag) {
 			var profile =  {
-				"Name": this.refs.name.getFullName(),
+				"fullname": this.refs.name.getFullName(),
 				"firstName": this.refs.name.getFirstName(),
 				"lastName": this.refs.name.getLastName()
 			};

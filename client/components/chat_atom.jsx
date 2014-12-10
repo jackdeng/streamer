@@ -30,17 +30,12 @@ ChatAtom = React.createClass({
     }
   },
   updateChat: function(comment) {
-    // TODO: figure out how to render when the collection is updated, 
-    // as not to update state ourselves.
     var query = {
       "url": this.props.url
     }
 
     var comments = this.state.data;
     var newComments = comments.concat([comment]);
-
-    // optimistically display the chat message in client
-    //this.setState({"data": newComments});
 
     // update the chat collection.
     var options = {
@@ -112,7 +107,8 @@ var ChatUser = React.createClass({
   },
   createUserClassname: function() {
     var className = "chatUser";
-    if (this.props.userName === "Guest") {
+    var currentUsername = Meteor.user().profile.fullname;
+    if (this.props.userName === currentUsername) {
       className = className.concat(" ", "self"); 
     }
     return className;
@@ -150,7 +146,12 @@ var ChatForm = React.createClass({
     if (event.keyCode === 13) {
       // cancel default event actions
       event.preventDefault();
-      var author = "Guest";
+
+      var user = Meteor.user();
+      var userId = user._id;
+      var userProfile = user.profile;
+      var author = userProfile.fullname;
+
       var text = this.refs.text.getDOMNode().value.trim();
       if (!text || !author) {
         return;
