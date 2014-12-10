@@ -34,7 +34,7 @@ ChatAtom = React.createClass({
       "url": this.props.url
     }
 
-    var comments = this.state.data;
+    var comments = this.props.chatRoom.history;
     var newComments = comments.concat([comment]);
 
     // update the chat collection.
@@ -47,9 +47,11 @@ ChatAtom = React.createClass({
   },
   render: function() {
     // TODO! Use this.props.chatRoom.history or this.state.data?
+    // TODO correct the error when this.props.chatRoom is undefined.
+    //        <ChatList data={this.state.data} />
     return  (
       <div className="chatBox">
-        <ChatList data={this.state.data} />
+        <ChatList data={this.props.chatRoom.history} />
         <ChatForm onCommentSubmit={this.updateChat} />
       </div>
     );
