@@ -1,15 +1,8 @@
 Views = {};
 
-Views.Stream = function() {
-	//TODO: investigate excluding autorun, seems to be reactive without it.
+var displayStream = function(postsToShow) {
 	Tracker.autorun(function() {
-		// only return 25 most recent metadata
-		var data = Posts.find({}, {
-			"limit": 15,
-			"sort": {
-				"date": -1
-			}
-		}).map(function(item) {
+		var data = postsToShow.map(function(item) {
 			var metadata = item.metadata || [];
 			return {
 				"title": item.title,
@@ -27,7 +20,16 @@ Views.Stream = function() {
 	});
 }
 
-// The Login view
+Views.Stream = function() {
+	//TODO: investigate excluding autorun, seems to be reactive without it.
+	displayStream(Posts.find({}, {
+		"limit": 15,
+		"sort": {
+			"date": -1
+		}
+	}));
+}
+
 Views.Login = function() {
 	Tracker.autorun(function() {
 		React.renderComponent(new LoginAtom(), document.body);
@@ -41,7 +43,19 @@ Views.Chat = function() {
 }
 
 Views.Bookmarks = function() {
-	Tracker.autorun(function() {
-		//TODO: implement
-	});
+	if (Meteor.user()) {
+	  urlsAndDates = Meteor.user().bookmarks;
+	  // get unique bookmarks only. Currently, we store one entry in this array
+	  // for every time a user bookmarks something.
+	  // TODO: ensure uniqueness in a more elegant way
+	  var urlsOnly = _.uniq(urlsAndDates.map(function(item) {
+	    return item["url"];
+	  }));
+	  // this will make a lot of database calls if a user has stored a lot of bookmarks.
+	  // TODO: find better way to maintain order of returned bookmarks
+	  posts = urlsOnly.map(function(url) {
+	    return Posts.findOne({url: url});
+	  });
+		displayStream(posts);
+	}
 }

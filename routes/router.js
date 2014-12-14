@@ -24,5 +24,11 @@ Router.route('/chat', function() {
 });
 
 Router.route('/bookmarks', function() {
-	Routes.bookmarks();
+	Tracker.autorun(function() {
+		if (Meteor.loggingIn() || Meteor.user()) {
+			Routes.bookmarks();
+		} else {
+			Routes.login();
+		}
+	});
 });
