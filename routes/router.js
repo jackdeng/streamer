@@ -1,5 +1,5 @@
 Router.route('/', function () {
-	// You can redirect from one route to another from inside a route function 
+	// You can redirect from one route to another from inside a route function
 	// by using the redirect method inside your route function.
 
 	Tracker.autorun(function() {
@@ -21,4 +21,8 @@ Router.route('/login', function () {
 
 Router.route('/chat', function() {
 	Routes.chat();
-})
+});
+
+Router.route('/bookmarks', function() {
+	Routes.bookmarks();
+});

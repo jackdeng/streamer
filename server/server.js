@@ -1,5 +1,14 @@
 /** Start of server code **/
 
+/** Accounts Configuration **/
+Accounts.onCreateUser(function(options, user) {
+  user.bookmarks = [];
+  // We still want the default hook's 'profile' behavior.
+  if (options.profile)
+    user.profile = options.profile;
+  return user;
+});
+
 /** Routes **/
 Router.route('/visit', {"where": "server"}).post(function() {
   console.log('***!!! PLUGIN hit POST route!');
@@ -29,6 +38,11 @@ Router.route('/visit', {"where": "server"}).post(function() {
     updateMetadata(data);
   });
 
+  // update Users
+  Meteor.users.update({ _id: data.userid }, {
+    $push: { bookmarks: {date: data.date, url: data.url} }
+  });
+
   // new chat for url.
   var chatRoom = Chat.findOne(query);
   var newChat = {
@@ -43,7 +57,7 @@ Router.route('/visit', {"where": "server"}).post(function() {
         console.log("chat insert gone wrong");
         return;
       }
-    }); 
+    });
   }
 
 });
@@ -78,6 +92,16 @@ Meteor.methods({
         "history": options.comments
       }
     });
+  },
+  "getBookmarksForUser": function(userId) {
+    // userBookmarks is a list of post IDs that this user has bookmarked
+    var userBookmarks = Meteor.users.findOne(
+      { _id: userId },
+      { fields: { bookmarks: 1 } }
+    );
+    var bookmarks = Posts.find(
+      { field: { $in: userBookmarks } }, { "sort": { "date": -1 } }
+    );
   }
 });
 
