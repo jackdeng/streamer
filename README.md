@@ -55,7 +55,7 @@ live @ http://streamer.meteor.com/
 
 	[ ] Figure out how many people are in a chat conversation. Who can you talk to?
 
-[ ] Turn off autopublish
+[x] Turn off autopublish
 
 [ ] Plugin integration: functionalities include adding urls, checking user credentials
 
