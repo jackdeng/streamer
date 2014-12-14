@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 /** Chat Box Structure **/
-/** 
+/**
 - chatBox
   - chatList
     - chatEntry
@@ -38,12 +38,12 @@ ChatAtom = React.createClass({
   createCard: function() {
     var num = this.props.posters.length;
 
-    if (this.state.isChat) {
+    if (this.state.isChat || this.props.chatRoom.history.length > 0) {
       return (
         <div className="chatBox">
           <ChatList data={this.props.chatRoom.history} />
           <ChatForm onCommentSubmit={this.updateChat} />
-        </div> 
+        </div>
       );
     } else if (num > 1 && this.props.posters.indexOf(Meteor.userId()) != -1) {
       return (
@@ -109,7 +109,7 @@ var ChatUser = React.createClass({
     return this.state;
   },
   createShortUsername: function() {
-    // shortName is first two letter of first name. 
+    // shortName is first two letter of first name.
     var shortName = this.props.userName.split(" ")[0].slice(0, 2);
     return shortName;
   },
@@ -117,7 +117,7 @@ var ChatUser = React.createClass({
     var className = "chatUser";
     var currentUsername = Meteor.user().profile.fullname;
     if (this.props.userName === currentUsername) {
-      className = className.concat(" ", "self"); 
+      className = className.concat(" ", "self");
     }
     return className;
   },
