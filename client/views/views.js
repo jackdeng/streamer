@@ -57,6 +57,6 @@ Views.Bookmarks = function() {
 	  posts = urlsOnly.map(function(url) {
 	    return Posts.findOne({url: url});
 	  });
-		displayStream(posts);
+    displayStream(posts);
 	}
 }
