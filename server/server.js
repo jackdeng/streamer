@@ -9,7 +9,18 @@ Router.route('/visit', {"where": "server"}).post(function() {
 
   // update Posts
   var query = {"url": data.url};
-  Posts.update(query, data, {"upsert": true}, function(err, doc) {
+  var modifier = {
+    "$set": {
+      "url": data.url,
+      "date": data.date,
+      "title": data.title
+    },
+    "$addToSet": {
+      "posters": data.userid
+    }
+  }
+
+  Posts.update(query, modifier, {"upsert": true}, function(err, doc) {
     if (err) {
       console.log("Post update ERROR");
       return;
