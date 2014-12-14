@@ -40,7 +40,7 @@ Router.route('/visit', {"where": "server"}).post(function() {
 
   // update Users
   Meteor.users.update({ _id: data.userid }, {
-    $push: { bookmarks: {date: data.date, url: data.url} }
+    "$push": {"bookmarks": {"date": data.date, "url": data.url}}
   });
 
   // new chat for url.
@@ -96,11 +96,11 @@ Meteor.methods({
   "getBookmarksForUser": function(userId) {
     // userBookmarks is a list of post IDs that this user has bookmarked
     var userBookmarks = Meteor.users.findOne(
-      { _id: userId },
-      { fields: { bookmarks: 1 } }
+      {"_id": userId},
+      {"fields": {"bookmarks": 1}}
     );
     var bookmarks = Posts.find(
-      { field: { $in: userBookmarks } }, { "sort": { "date": -1 } }
+      {"field": {"$in": userBookmarks}}, {"sort": {"date": -1}}
     );
   }
 });
