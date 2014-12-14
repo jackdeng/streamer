@@ -2,7 +2,7 @@ Routes = {};
 
 // main page
 Routes.main = function() {
-	Views.Stream();	
+	Views.Stream();
 }
 
 Routes.login = function() {
@@ -11,4 +11,8 @@ Routes.login = function() {
 
 Routes.chat = function() {
 	Views.Chat();
+}
+
+Routes.bookmarks = function() {
+  Views.Bookmarks();
 }

@@ -14,11 +14,11 @@
 
 live @ http://streamer.meteor.com/
 
-1. deploy: 
-	
+1. deploy:
+
 	meteor deploy streamer.meteor.com
 
-2. access db: 
+2. access db:
 
 	meteor mongo streamer.meteor.com
 
@@ -30,6 +30,14 @@ live @ http://streamer.meteor.com/
 	[x] Login
 	[ ] Logout
 	[ ] Recovery
+
+	[ ] Users seeing their own bookmarks
+
+		[x] Change User collection to include list of bookmarks that user has saved
+		[x] Change plugin to be aware of what user is logged in to app
+		[x] Change plugin to mutate this list when a user saves a bookmark
+		[x] Create Meteor method to return all of these posts
+		[ ] Create UI to display this stream
 
 [ ] Public Stream
 
@@ -46,6 +54,8 @@ live @ http://streamer.meteor.com/
 [ ] Chat
 
 	[ ] Figure out how many people are in a chat conversation. Who can you talk to?
+
+[ ] Turn off autopublish
 
 [ ] Plugin integration: functionalities include adding urls, checking user credentials
 

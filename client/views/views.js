@@ -12,7 +12,7 @@ Views.Stream = function() {
 		}).map(function(item) {
 			var metadata = item.metadata || [];
 			return {
-				"title": item.title, 
+				"title": item.title,
 				"url": item.url,
 				"user": item.user,
 				"posters": item.posters,
@@ -38,5 +38,11 @@ Views.Login = function() {
 Views.Chat = function() {
 	Tracker.autorun(function() {
 		React.renderComponent(new ChatAtom(), document.body);
+	});
+}
+
+Views.Bookmarks = function() {
+	Tracker.autorun(function() {
+		//TODO: implement
 	});
 }
