@@ -40,16 +40,25 @@ body {
 	position: relative;
 }
 
-.chatBox {
+.chatContent {
 	position: absolute;
 	top: 0px;
 	left: 550px;
 	margin-left: 30px;
+}
 
+.chatBox {
 	.chatList {
 		max-height: 300px;
 		overflow-y: auto;
 	}
+}
+
+.match {
+	padding: 15px 30px;
+	background: $slightPink;
+	color: white;
+	cursor: pointer;
 }
 
 /* Cards */

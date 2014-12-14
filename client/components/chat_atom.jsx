@@ -14,26 +14,13 @@
 
 ChatAtom = React.createClass({
   mixins: [ReactMeteor.Mixin],
-  getInitialState: function() {
-    return {
-      data: [] 
-    };
-  },
   getMeteorState: function() {
     return this.state;
-  },
-  componentWillReceiveProps: function(nextProps) {
-    if (nextProps.chatRoom) {
-      this.setState({
-        data: nextProps.chatRoom.history
-      });
-    }
   },
   updateChat: function(comment) {
     var query = {
       "url": this.props.url
     }
-
     var comments = this.props.chatRoom.history;
     var newComments = comments.concat([comment]);
 
@@ -45,15 +32,34 @@ ChatAtom = React.createClass({
 
     Meteor.call("updateChat", options);
   },
+  showChat: function() {
+    this.setState({"isChat": true});
+  },
+  createCard: function() {
+    var num = this.props.posters.length;
+
+    if (this.state.isChat) {
+      return (
+        <div className="chatBox">
+          <ChatList data={this.props.chatRoom.history} />
+          <ChatForm onCommentSubmit={this.updateChat} />
+        </div> 
+      );
+    } else if (num > 1 && this.props.posters.indexOf(Meteor.userId()) != -1) {
+      return (
+        <div className="match" onClick={this.showChat}>match!</div>
+      );
+    } else {
+      return;
+    }
+  },
   render: function() {
     // TODO! Use this.props.chatRoom.history or this.state.data?
     // TODO correct the error when this.props.chatRoom is undefined.
-    //        <ChatList data={this.state.data} />
     return  (
-      <div className="chatBox">
-        <ChatList data={this.props.chatRoom.history} />
-        <ChatForm onCommentSubmit={this.updateChat} />
-      </div>
+        <div className="chatContent">
+          {this.createCard()}
+        </div>
     );
   }
 });

@@ -15,6 +15,7 @@ Views.Stream = function() {
 				"title": item.title, 
 				"url": item.url,
 				"user": item.user,
+				"posters": item.posters,
 				"description": metadata.description || "",
 				"images": metadata.images || [],
 				"media": metadata.media || {},

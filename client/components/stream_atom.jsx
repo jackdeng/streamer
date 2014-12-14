@@ -26,7 +26,7 @@ StreamAtom = React.createClass({
 			return (
 				<div className="sleeve">
 					<EmbelishCard data={data}></EmbelishCard>
-					<ChatAtom url={data.url} chatRoom={chatRoom}></ChatAtom>
+					<ChatAtom url={data.url} chatRoom={chatRoom} posters={data.posters}></ChatAtom>
 				</div>
 			)
 		}, this);	
