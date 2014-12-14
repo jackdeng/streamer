@@ -1,5 +1,23 @@
 /** Start of server code **/
 
+/** Publishing **/
+Meteor.publish("posts", function() {
+  return Posts.find();
+});
+
+Meteor.publish("chat", function() {
+  return Chat.find();
+});
+
+Meteor.publish("userData", function () {
+  if (this.userId) {
+    return Meteor.users.find({_id: this.userId},
+                             {fields: {bookmarks: 1}});
+  } else {
+    this.ready();
+  }
+});
+
 /** Accounts Configuration **/
 Accounts.onCreateUser(function(options, user) {
   user.bookmarks = [];
@@ -93,24 +111,4 @@ Meteor.methods({
       }
     });
   },
-  "getBookmarksForUser": function(userId) {
-    // userBookmarks is a list of post IDs that this user has bookmarked
-    var userBookmarks = Meteor.users.findOne(
-      { _id: userId },
-      { fields: { bookmarks: 1 } }
-    );
-    var bookmarks = Posts.find(
-      { field: { $in: userBookmarks } }, { "sort": { "date": -1 } }
-    );
-  }
 });
-
-var populatePostsWithReddit = function(results) {
-  console.log("beginning to populate Posts collection with top Reddit posts");
-  for (var index = 0; index < results.length; index++) {
-    var data = results[index].data;
-    var query = {"url": data.url};
-    Posts.update(query, data, {"upsert": true});
-  }
-  console.log("populating has finished. Posts count: " + Posts.find().count());
-}
