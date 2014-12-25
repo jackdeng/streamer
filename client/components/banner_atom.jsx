@@ -8,7 +8,7 @@ BannerAtom = React.createClass({
 	render: function() {
 		return (
 			<div className="banner">
-				<div className="logo">wanderful</div>
+				<div className="logo">W</div>
 			</div>
 		);
 	}

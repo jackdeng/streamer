@@ -32,18 +32,29 @@ body {
 
 /* Banner */
 .banner {
+	/* put banner on top as fixture */
+	position: fixed;
+	top: 0px;
+	z-index: 2;
+
+	/* look and feel */
 	width: 100%;
 	padding: 10px 0px;
 	text-align: center;
-	font-size: 28px;
-	background: rgba(0, 0, 0, 0.8);
-	color: rgba(255, 90, 101, 1);
+	background: #333333;
+
+	.logo {
+		cursor: pointer;
+		font-weight: bold;
+		font-size: 28px;
+		color: $slightPink;
+	}
 }
 
 /* Stream */
 .stream {
 	width: $streamWidth;
-	margin: auto;
+	margin: 95px auto;
 }
 
 /* Sleeve */
