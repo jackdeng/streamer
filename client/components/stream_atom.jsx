@@ -29,15 +29,18 @@ StreamAtom = React.createClass({
 					<ChatAtom url={data.url} chatRoom={chatRoom} posters={data.posters}></ChatAtom>
 				</div>
 			)
-		}, this);	
+		}, this);
 
 		return cards;
 	},
 	render: function() {
 		return (
-			<div className="stream">
-				{this.createCards()}
-			</div>	
+			<div className="content">
+				<BannerAtom/>
+				<div className="stream">
+					{this.createCards()}
+				</div>
+			</div>
 		);
 	}
 });

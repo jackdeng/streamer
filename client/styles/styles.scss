@@ -23,9 +23,21 @@ body {
 		display: none;
 	}
 
+	margin: 0px;
+
 	/* font*/
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	color: grey;
+}
+
+/* Banner */
+.banner {
+	width: 100%;
+	padding: 10px 0px;
+	text-align: center;
+	font-size: 28px;
+	background: rgba(0, 0, 0, 0.8);
+	color: rgba(255, 90, 101, 1);
 }
 
 /* Stream */
@@ -68,7 +80,7 @@ body {
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	margin: 50px 0px;
 	position: relative;
-	
+
 	.badges {
 		img {
 			width: 16px;
@@ -100,7 +112,7 @@ body {
 
 .embelish.card.row {
 	/* TODO fix row style flex, image should always be native width and text will fill */
-	display: flex;	
+	display: flex;
 
 	.media {
 		margin-right: 20px;
@@ -119,7 +131,7 @@ body {
 			margin: 0 auto;
 		}
 	}
-	
+
 	.embedly-embed {
 		/* 16:9 aspect ratio */;
 		max-width: 530px;
@@ -139,7 +151,7 @@ body {
 			}
 		}
 
-		
+
 		.description {
 			padding: 0px 10px;
 			padding-bottom: 10px;
@@ -152,7 +164,7 @@ body {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);	
+	transform: translate(-50%, -50%);
 }
 
 .loginBody {
@@ -160,7 +172,7 @@ body {
 	padding: 10px;
 
 	/* prevent body click highlighting on login */
-	-webkit-user-select: none; /* Chrome/Safari */        
+	-webkit-user-select: none; /* Chrome/Safari */
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+ */
 }
@@ -194,16 +206,16 @@ body {
 		background: #60CFFF;
 	}
 	[data-num="2"] {
-		background: #E8CB58;	
+		background: #E8CB58;
 	}
 	[data-num="3"] {
-		background: #FF896D;	
+		background: #FF896D;
 	}
 	[data-num="4"] {
-		background: #AD58E8;	
+		background: #AD58E8;
 	}
 	[data-num="5"] {
-		background: #E33258;	
+		background: #E33258;
 	}
 }
 
