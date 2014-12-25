@@ -8,7 +8,6 @@ autopublish
 insecure
 
 react
-react
 iron:router
 http
 accounts-password
