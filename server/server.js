@@ -1,5 +1,19 @@
 /** Start of server code **/
 
+/** Publication **/
+Meteor.publish("posts", function(options) {
+  return Posts.find({}, {
+      "limit": 15,
+      "sort": {
+        "date": -1
+      }
+    })
+});
+
+Meteor.publish("chat", function() {
+  return Chat.find();
+});
+
 /** Accounts Configuration **/
 Accounts.onCreateUser(function(options, user) {
   user.bookmarks = [];

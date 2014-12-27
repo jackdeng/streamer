@@ -1,3 +1,8 @@
+/* Subscriptions */
+Meteor.subscribe("posts");
+Meteor.subscribe("chat");
+
+
 Meteor.startup(function() {
 	Tracker.autorun(function() {
 		console.log("/*** Meteor startup ***/");
