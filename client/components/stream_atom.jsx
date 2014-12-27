@@ -40,6 +40,7 @@ StreamAtom = React.createClass({
 				<div className="stream">
 					{this.createCards()}
 				</div>
+				<PaginatorAtom />
 			</div>
 		);
 	}
