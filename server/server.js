@@ -3,7 +3,7 @@
 /** Publication **/
 Meteor.publish("posts", function(options) {
   return Posts.find({}, {
-      "limit": 15,
+      "limit": options.limit,
       "sort": {
         "date": -1
       }

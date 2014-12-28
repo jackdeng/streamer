@@ -1,16 +1,17 @@
+/* setup */
+var POST_LIMIT = 15;
+Session.set("postLimit", POST_LIMIT);
+
 /* Subscriptions */
-Meteor.subscribe("posts");
+Tracker.autorun(function() {
+	Meteor.subscribe("posts", {"limit": Session.get("postLimit")});
+})
 Meteor.subscribe("chat");
 
-
-Meteor.startup(function() {
-	Tracker.autorun(function() {
-		console.log("/*** Meteor startup ***/");
-
-		// save cookies
-		if (Meteor.userId()) {
-			console.log("UserId found, saving to Cookie");
-			Util.setCookie("meteor_userid", Meteor.userId(), 1);
-		}
-	});
+/* save cookies */
+Tracker.autorun(function() {
+	if (Meteor.userId()) {
+		console.log("UserId found, saving to Cookie");
+		Util.setCookie("meteor_userid", Meteor.userId(), 1);
+	}
 });

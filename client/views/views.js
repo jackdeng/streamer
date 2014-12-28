@@ -3,7 +3,6 @@ Views = {};
 Views.Stream = function() {
 	//TODO: investigate excluding autorun, seems to be reactive without it.
 	Tracker.autorun(function() {
-		// only return 25 most recent metadata
 		var data = Posts.find().map(function(item) {
 			var metadata = item.metadata || [];
 			return {
