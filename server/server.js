@@ -7,7 +7,7 @@ Meteor.publish("posts", function(options) {
       "sort": {
         "date": -1
       }
-    })
+  })
 });
 
 Meteor.publish("chat", function() {
@@ -118,13 +118,3 @@ Meteor.methods({
     );
   }
 });
-
-var populatePostsWithReddit = function(results) {
-  console.log("beginning to populate Posts collection with top Reddit posts");
-  for (var index = 0; index < results.length; index++) {
-    var data = results[index].data;
-    var query = {"url": data.url};
-    Posts.update(query, data, {"upsert": true});
-  }
-  console.log("populating has finished. Posts count: " + Posts.find().count());
-}
