@@ -38,19 +38,21 @@ ChatAtom = React.createClass({
   createCard: function() {
     var num = this.props.posters.length;
 
-    if (this.state.isChat || this.props.chatRoom.history.length > 0) {
-      return (
-        <div className="chatBox">
-          <ChatList data={this.props.chatRoom.history} />
-          <ChatForm onCommentSubmit={this.updateChat} />
-        </div>
-      );
-    } else if (num > 1 && this.props.posters.indexOf(Meteor.userId()) != -1) {
-      return (
-        <div className="match" onClick={this.showChat}>match!</div>
-      );
-    } else {
-      return;
+    if (this.props.chatRoom) {
+      if (this.state.isChat || this.props.chatRoom.history.length > 0) {
+        return (
+          <div className="chatBox">
+            <ChatList data={this.props.chatRoom.history} />
+            <ChatForm onCommentSubmit={this.updateChat} />
+          </div>
+        );
+      } else if (num > 1 && this.props.posters.indexOf(Meteor.userId()) != -1) {
+        return (
+          <div className="match" onClick={this.showChat}>match!</div>
+        );
+      } else {
+        return;
+      }
     }
   },
   render: function() {
