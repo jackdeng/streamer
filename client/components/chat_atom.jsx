@@ -72,6 +72,8 @@ var ChatList = React.createClass({
     return this.state;
   },
   getChatEntries: function() {
+    //TODO: refactor hack to use user_color and user_name from user profile
+    //refactor chat to have messages by _id.
     var colorDictionary = {};
     var chatEntries = this.props.data.map(function(entry) {
       if (!colorDictionary[entry.user]) {
