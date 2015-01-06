@@ -72,9 +72,14 @@ var ChatList = React.createClass({
     return this.state;
   },
   getChatEntries: function() {
+    var colorDictionary = {};
     var chatEntries = this.props.data.map(function(entry) {
+      if (!colorDictionary[entry.user]) {
+        colorDictionary[entry.user] = Please.make_color({"saturation": 0.6});
+      }
+
       return (
-        <ChatEntry user={entry.user} message={entry.message}></ChatEntry>
+        <ChatEntry user={entry.user} message={entry.message} color={colorDictionary[entry.user]}></ChatEntry>
       );
     });
 
@@ -97,7 +102,7 @@ var ChatEntry = React.createClass({
   render : function() {
     return (
       <div className="chatEntry">
-        <ChatUser userName={this.props.user} userColor={Please.make_color({"saturation": 0.58})}></ChatUser>
+        <ChatUser userName={this.props.user} userColor={this.props.color}></ChatUser>
         <ChatMessage message={this.props.message}></ChatMessage>
         <div className="placeholder"></div>
       </div>
