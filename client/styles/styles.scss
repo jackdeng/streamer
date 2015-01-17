@@ -59,6 +59,31 @@ body {
 	}
 }
 
+.where {
+	position: fixed;
+	top: 50px;
+	padding: 10px;
+	text-align: center;
+	/* top to bottom */
+	color: white;
+	font-size: 24px;
+	width: 13px;
+	word-wrap: break-word;
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	cursor: pointer;
+
+	&.near {
+		background: #1BB240;
+		left: 60px;
+	}
+
+	&.here {
+		background: #3497CC;
+		left: 20px;
+	}
+}
+
 /* Pagination */
 
 .pagination {

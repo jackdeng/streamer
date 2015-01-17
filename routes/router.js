@@ -4,7 +4,7 @@ Router.route('/', function () {
 
 	Tracker.autorun(function() {
 		if (Meteor.loggingIn() || Meteor.user()) {
-			Routes.main();
+			Router.go('/near');
 		} else {
 			Routes.login();
 		}
@@ -23,6 +23,12 @@ Router.route('/chat', function() {
 	Routes.chat();
 });
 
-Router.route('/bookmarks', function() {
-	Routes.bookmarks();
-});
+Router.route('/near', function() {
+	Tracker.autorun(function() {
+		if (Meteor.loggingIn() || Meteor.user()) {
+			Routes.main();
+		} else {
+			Routes.login();
+		}
+	})
+})

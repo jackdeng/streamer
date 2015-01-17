@@ -12,7 +12,3 @@ Routes.login = function() {
 Routes.chat = function() {
 	Views.Chat();
 }
-
-Routes.bookmarks = function() {
-  Views.Bookmarks();
-}
