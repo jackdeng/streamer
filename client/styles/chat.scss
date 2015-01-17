@@ -1,4 +1,4 @@
-/** 
+/**
 - chatBox
 - chatList
   - chatEntry
@@ -9,13 +9,13 @@
 **/
 
 .chatBox {
-	border: 1px rgba(88, 88, 88, 0.25) solid;	
-	width: 250px;
+	border: 1px rgba(88, 88, 88, 0.25) solid;
+	width: 230px;
 }
 
 .chatList {
 	padding: 10px;
-	border-bottom: 1px rgba(88, 88, 88, 0.25) solid;	
+	border-bottom: 1px rgba(88, 88, 88, 0.25) solid;
 }
 
 .chatEntry {
@@ -60,7 +60,7 @@
 
 .chatInput {
 	color: lightgrey;
-	border: none;	
+	border: none;
 	width: 100%;
 }
 

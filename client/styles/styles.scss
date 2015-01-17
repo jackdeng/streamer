@@ -43,7 +43,7 @@ body {
 	/* put banner on top as fixture */
 	position: fixed;
 	top: 0px;
-	z-index: 2;
+	z-index: 3;
 
 	/* look and feel */
 	width: 100%;
@@ -67,11 +67,14 @@ body {
 	color: lightgrey;
 	border: 1px solid lightgrey;
 	padding: 5px 10px;
+	width: 50px;
+	text-align: center;
 	/* hack set z-index to show user button on top of banner */
-	z-index: 2;
+	z-index: 3;
 }
 
 .where {
+	z-index: 2;
 	position: fixed;
 	top: -45px;
 	padding: 10px;
@@ -88,12 +91,12 @@ body {
 
 	&.near {
 		background: #1BB240;
-		left: 60px;
+		right: 50px;
 	}
 
 	&.here {
 		background: #3497CC;
-		left: 20px;
+		right: 12px;
 	}
 }
 
