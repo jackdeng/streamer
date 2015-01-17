@@ -3,10 +3,9 @@ var POST_LIMIT = 15;
 Session.set("postLimit", POST_LIMIT);
 
 /* Subscriptions */
-Tracker.autorun(function() {
-	Meteor.subscribe("posts", {"limit": Session.get("postLimit")});
-})
+Meteor.subscribe("posts", {"limit": Session.get("postLimit")});
 Meteor.subscribe("chat");
+Meteor.subscribe("userData");
 
 /* save cookies */
 Tracker.autorun(function() {

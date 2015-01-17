@@ -32,3 +32,13 @@ Router.route('/near', function() {
 		}
 	})
 })
+
+Router.route('/here', function() {
+	Tracker.autorun(function() {
+		if (Meteor.loggingIn() || Meteor.user()) {
+			Routes.bookmarks();
+		} else {
+			Routes.login();
+		}
+	});
+});
