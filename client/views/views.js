@@ -51,7 +51,7 @@ Views.Bookmarks = function() {
     // TODO: find better way to maintain order of returned bookmarks
     posts = urlsOnly.map(function(url) {
       return Posts.findOne({url: url});
-    });
+    }).reverse();
     displayStream(posts);
   }
 }
