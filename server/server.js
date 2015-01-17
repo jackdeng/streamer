@@ -17,7 +17,7 @@ Meteor.publish("chat", function() {
 Meteor.publish("userData", function () {
   if (this.userId) {
     return Meteor.users.find({_id: this.userId},
-                             {fields: {bookmarks: 1}});
+      {fields: {bookmarks: 1}});
   } else {
     this.ready();
   }
@@ -116,4 +116,22 @@ Meteor.methods({
       }
     });
   },
+  "addUserToPost": function(options) {
+    var url = options.url;
+    var userId = options.userId;
+    // update Posts
+    var query = {"url": url};
+    var modifier = {
+      "$addToSet": {
+        "posters": userId
+      }
+    }
+
+    Posts.update(query, modifier, {"upsert": true}, function(err, doc) {
+      if (err) {
+        console.log("Post update ERROR");
+        return;
+      }
+    });
+  }
 });

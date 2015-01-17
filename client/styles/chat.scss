@@ -2,10 +2,11 @@ $slightPink: #FF5A65;
 
 .like {
 	color: lightgrey;
-	font-size: 1.5em;
 	cursor: pointer;
+	font-size: 20px
 }
 
+.like.selected,
 .like:hover {
 	color: $slightPink
 }

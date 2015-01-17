@@ -1,17 +1,5 @@
 /** @jsx React.DOM */
 
-/** Chat Box Structure **/
-/**
-- chatBox
-  - chatList
-    - chatEntry
-      - chatAuthor
-      - chatMessage
-  - chatForm
-    - chatAuthor
-    - chatInput
-**/
-
 ChatAtom = React.createClass({
   mixins: [ReactMeteor.Mixin],
   getMeteorState: function() {
@@ -37,6 +25,20 @@ ChatAtom = React.createClass({
   },
   likePost: function() {
     console.log("hey you liked it")
+    // call server to save post
+    options = {
+      userId: Meteor.userId(),
+      url: this.props.url
+    }
+
+    Meteor.call("addUserToPost", options);
+  },
+  getLikeClasses: function() {
+    var classes = "like";
+    if (this.props.posters.indexOf(Meteor.userId()) != -1) {
+      classes += " selected";
+    }
+    return classes;
   },
   createCard: function() {
     var num = this.props.posters.length;
@@ -50,13 +52,14 @@ ChatAtom = React.createClass({
           </div>
         );
       } else if (num > 1 && this.props.posters.indexOf(Meteor.userId()) != -1) {
+          var matchString = "m\u2661tch!"
           return (
-            <div className="match" onClick={this.showChat}>match!</div>
+            <div className="match" onClick={this.showChat}>{matchString}</div>
           );
       } else {
           var heart = "\u2661"
           return (
-            <div className="like" onClick={likePost}>{heart}</div>
+            <div className={this.getLikeClasses()} onClick={this.likePost}>{heart}</div>
           );
       }
     }
