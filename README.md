@@ -31,19 +31,19 @@ live @ http://streamer.meteor.com/
 	[ ] Logout
 	[ ] Recovery
 
-	[ ] Users seeing their own bookmarks
+	[x] Users seeing their own bookmarks
 
 		[x] Change User collection to include list of bookmarks that user has saved
 		[x] Change plugin to be aware of what user is logged in to app
 		[x] Change plugin to mutate this list when a user saves a bookmark
 		[x] Create Meteor method to return all of these posts
-		[ ] Create UI to display this stream
+		[x] Create UI to display this stream
 
 [ ] Public Stream
 
 	[ ] Ranking algo
 
-[ ] User Stream
+[x] User Stream
 
 [ ] Filtering
 
