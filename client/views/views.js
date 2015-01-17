@@ -18,7 +18,7 @@ Views.Stream = function() {
 			}
 		});
 
-		React.renderComponent(new StreamAtom({ "data": data, "route": window.location.href}), document.body);
+		React.renderComponent(new StreamAtom({ "data": data, "route": Router.current().route.getName()}), document.body);
 	});
 }
 

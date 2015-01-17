@@ -42,15 +42,15 @@ var HereAtom = React.createClass({
 	},
 	createClassname: function() {
 		var classeName = "where here";
-		if (this.props.route.indexOf("here") > 0) {
+		if (this.props.route.indexOf("here") != -1) {
 			className += " selected"
 		}
 		return className;
 	},
 	render: function() {
 		return (
-			<div className="where here">
-				<div className="badge" onClick={this.goToWhere}>#here</div>
+			<div className="where here" onClick={this.goToWhere}>
+				<div className="badge">#here</div>
 			</div>
 		);
 	}
@@ -66,15 +66,15 @@ var NearAtom = React.createClass({
 	},
 	createClassname: function() {
 		var className = "where near";
-		if (this.props.route.indexOf("near") > 0) {
+		if (this.props.route.indexOf("near") != -1) {
 			className += " selected"
 		}
 		return className;
 	},
 	render: function() {
 		return (
-			<div className={this.createClassname()}>
-				<div className="badge" onClick={this.goToWhere}>#near</div>
+			<div className={this.createClassname()} onClick={this.goToWhere}>
+				<div className="badge">#near</div>
 			</div>
 		);
 	}
