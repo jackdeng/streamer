@@ -35,6 +35,9 @@ ChatAtom = React.createClass({
   showChat: function() {
     this.setState({"isChat": true});
   },
+  likePost: function() {
+    console.log("hey you liked it")
+  },
   createCard: function() {
     var num = this.props.posters.length;
 
@@ -47,11 +50,14 @@ ChatAtom = React.createClass({
           </div>
         );
       } else if (num > 1 && this.props.posters.indexOf(Meteor.userId()) != -1) {
-        return (
-          <div className="match" onClick={this.showChat}>match!</div>
-        );
+          return (
+            <div className="match" onClick={this.showChat}>match!</div>
+          );
       } else {
-        return;
+          var heart = "\u2661"
+          return (
+            <div className="like" onClick={likePost}>{heart}</div>
+          );
       }
     }
   },

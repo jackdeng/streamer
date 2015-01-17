@@ -42,12 +42,6 @@ Views.Login = function() {
 	});
 }
 
-Views.Chat = function() {
-	Tracker.autorun(function() {
-		React.renderComponent(new ChatAtom(), document.body);
-	});
-}
-
 Views.Bookmarks = function() {
   if (Meteor.user()) {
     urlsAndDates = Meteor.user().bookmarks;

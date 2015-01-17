@@ -11,7 +11,7 @@ EmbelishCard = React.createClass({
 		var images = this.props.data.images;
 		if (images.length > 0) {
 			var image = images[0];
-			return (image.height >= image.width) && (image.width < 530); 
+			return (image.height >= image.width) && (image.width < 530);
 		}
 	},
 	hasImage: function() {
@@ -35,7 +35,7 @@ EmbelishCard = React.createClass({
 		if (!this.isVerticalImage()) {
 			return true;
 		}
-		return false;	
+		return false;
 	},
 	createClassNames: function() {
 		var classNames = "embelish card ";
@@ -64,7 +64,7 @@ var BadgeBlock = React.createClass({
 		return this.state;
 	},
 	render: function() {
-		return ( 
+		return (
 			<div className="badges">
 				<div className="favicon">
 					<a href={this.props.data.provider_url} target="_blank">
@@ -85,8 +85,8 @@ var MediaBlock = React.createClass({
 		var images = this.props.data.images;
 		if (images.length > 0) {
 			var image = images[0];
-			return image.url; 
-		} 	
+			return image.url;
+		}
 	},
 	insertMedia: function() {
 		// valid
@@ -116,7 +116,7 @@ var MediaBlock = React.createClass({
 });
 
 var InfoBlock = React.createClass({
-	mixins: [ReactMeteor.Mixin], 
+	mixins: [ReactMeteor.Mixin],
 	getMeteorState: function() {
 		return this.state;
 	},
@@ -151,7 +151,7 @@ var CardTitle = React.createClass({
 		}
 
 		for (var i=0; i < extensionMap.length; i++) {
-			var extension = extensionMap[i];	
+			var extension = extensionMap[i];
 			if (title.indexOf(extension) > 0) {
 				isExtension = true;
 				break;

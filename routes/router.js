@@ -19,10 +19,6 @@ Router.route('/login', function () {
 	Routes.login();
 });
 
-Router.route('/chat', function() {
-	Routes.chat();
-});
-
 Router.route('/near', function() {
 	Tracker.autorun(function() {
 		if (Meteor.loggingIn() || Meteor.user()) {

@@ -1,12 +1,14 @@
-/**
-- chatBox
-- chatList
-  - chatEntry
-    - chatAuthor
-    - chatMessage
-- chatForm
-  - chatInput
-**/
+$slightPink: #FF5A65;
+
+.like {
+	color: lightgrey;
+	font-size: 1.5em;
+	cursor: pointer;
+}
+
+.like:hover {
+	color: $slightPink
+}
 
 .chatBox {
 	border: 1px rgba(88, 88, 88, 0.25) solid;
