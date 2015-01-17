@@ -73,6 +73,7 @@ body {
 	border-bottom-right-radius: 8px;
 	border-bottom-left-radius: 8px;
 	cursor: pointer;
+	transition: top 0.75s;
 
 	&.near {
 		background: #1BB240;
@@ -86,6 +87,10 @@ body {
 }
 
 .where.selected {
+	top: 50px;
+}
+
+.where:hover {
 	top: 50px;
 }
 
