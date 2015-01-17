@@ -17,7 +17,10 @@ var displayStream = function(postsToShow) {
 			}
 		});
 
-		React.renderComponent(new StreamAtom({ "data": data, "route": Router.current().route.getName()}), document.body);
+		if (Meteor.user()) {
+			var username = Meteor.user().profile.firstName;
+			React.renderComponent(new StreamAtom({ "data": data, "route": Router.current().route.getName(), "username": username}), document.body);
+		}
 	});
 }
 

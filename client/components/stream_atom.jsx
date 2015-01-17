@@ -40,7 +40,7 @@ StreamAtom = React.createClass({
 	render: function() {
 		return (
 			<div className="content">
-				<BannerAtom route={this.props.route}/>
+				<BannerAtom route={this.props.route} username={this.props.username}/>
 				<div className="stream">
 					{this.createCards()}
 				</div>

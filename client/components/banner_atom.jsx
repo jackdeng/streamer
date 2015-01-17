@@ -12,6 +12,7 @@ BannerAtom = React.createClass({
 					<div className="logo">W</div>
 				</div>
 				<WhereAtom route={this.props.route}/>
+				<UserAtom username={this.props.username}/>
 			</div>
 		);
 	}
@@ -55,6 +56,36 @@ var HereAtom = React.createClass({
 		);
 	}
 });
+
+var UserAtom = React.createClass({
+	mixins: [ReactMeteor.Mixin],
+	getMeteorState: function() {
+		return this.state;
+	},
+	isHover: function() {
+		console.log("hoverrrr")
+		this.setState({"isHover": true});
+	},
+	isLeave: function() {
+		console.log("cyaaa")
+		this.setState({"isHover": false});
+	},
+	logout: function() {
+		Meteor.logout();
+	},
+	displayText: function() {
+		if (this.state.isHover) {
+			return "log out"
+		} else {
+			return this.props.username;
+		}
+	},
+	render: function() {
+		return (
+			<div className="user"  onMouseEnter={this.isHover} onMouseLeave={this.isLeave} onClick={this.logout}>{this.displayText()}</div>
+		);
+	}
+})
 
 var NearAtom = React.createClass({
 	mixins: [ReactMeteor.Mixin],

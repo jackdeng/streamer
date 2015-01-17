@@ -59,6 +59,18 @@ body {
 	}
 }
 
+.user {
+	cursor: pointer;
+	position: fixed;
+	top: 12px;
+	right: 12px;
+	color: lightgrey;
+	border: 1px solid lightgrey;
+	padding: 5px 10px;
+	/* hack set z-index to show user button on top of banner */
+	z-index: 2;
+}
+
 .where {
 	position: fixed;
 	top: -96px;
