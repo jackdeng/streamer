@@ -2,7 +2,10 @@
 StreamAtom = React.createClass({
 	mixins: [ReactMeteor.Mixin],
 	getInitialState: function() {
-		return {data: this.props.data};
+		return {
+			data: this.props.data,
+			route: this.props.route
+		};
 	},
 	getMeteorState: function() {
 		return this.state;
@@ -36,7 +39,7 @@ StreamAtom = React.createClass({
 	render: function() {
 		return (
 			<div className="content">
-				<BannerAtom/>
+				<BannerAtom route={this.state.route}/>
 				<div className="stream">
 					{this.createCards()}
 				</div>
