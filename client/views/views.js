@@ -23,7 +23,14 @@ var displayStream = function(postsToShow) {
 
 Views.Stream = function() {
 	//TODO: investigate excluding autorun, seems to be reactive without it.
-	displayStream(Posts.find({}, {}));
+	displayStream(Posts.find({}, {
+		//HACK: sort on client so that adding new content goes to the top. Otherwise, 15 most recent are returned but
+		//newly added items go to the bottom.
+		//HACK: investigate how we can sort only once, not both on client and server.
+		"sort": {
+			"date": -1
+		}
+	}));
 }
 
 Views.Login = function() {

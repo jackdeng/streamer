@@ -41,7 +41,7 @@ var HereAtom = React.createClass({
 		Router.go("/here");
 	},
 	createClassname: function() {
-		var classeName = "where here";
+		var className = "where here";
 		if (this.props.route.indexOf("here") != -1) {
 			className += " selected"
 		}
@@ -49,7 +49,7 @@ var HereAtom = React.createClass({
 	},
 	render: function() {
 		return (
-			<div className="where here" onClick={this.goToWhere}>
+			<div className={this.createClassname()} onClick={this.goToWhere}>
 				<div className="badge">#here</div>
 			</div>
 		);

@@ -13,7 +13,8 @@ StreamAtom = React.createClass({
 	componentWillReceiveProps: function(nextProps) {
 		// reset the data when new data is fetched an sent.
 		this.setState({
-			"data": nextProps.data || {}
+			"data": nextProps.data || {},
+			"route": nextProps.route || ""
 		});
 	},
 	getChatRoom: function(url) {
@@ -39,7 +40,7 @@ StreamAtom = React.createClass({
 	render: function() {
 		return (
 			<div className="content">
-				<BannerAtom route={this.state.route}/>
+				<BannerAtom route={this.props.route}/>
 				<div className="stream">
 					{this.createCards()}
 				</div>
