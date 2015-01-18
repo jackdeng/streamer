@@ -2,7 +2,6 @@
 BannerAtom = React.createClass({
 	mixins: [ReactMeteor.Mixin],
 	getMeteorState: function() {
-		console.log("hey in banner atom, eh the route could be: " + this.props.route)
 		return this.state;
 	},
 	render: function() {

@@ -6,8 +6,8 @@
 meteor-platform
 insecure
 
-react
 iron:router
 http
 accounts-password
 fourseven:scss
+react
