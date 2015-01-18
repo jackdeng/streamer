@@ -40,18 +40,25 @@ ChatAtom = React.createClass({
     }
     return classes;
   },
+  chattable: function() {
+    var hasChatContent = this.props.chatRoom.history.length > 0;
+    var isPoster = this.props.posters.indexOf(Meteor.userId()) != -1;
+    return isPoster && hasChatContent;
+  },
+  matchable: function() {
+    var numPosters = this.props.posters.length;
+    return numPosters > 1 && this.props.posters.indexOf(Meteor.userId()) != -1
+  },
   createCard: function() {
-    var num = this.props.posters.length;
-
     if (this.props.chatRoom) {
-      if (this.state.isChat || this.props.chatRoom.history.length > 0) {
+      if (this.state.isChat || this.chattable()) {
         return (
           <div className="chatBox">
             <ChatList data={this.props.chatRoom.history} />
             <ChatForm onCommentSubmit={this.updateChat} />
           </div>
         );
-      } else if (num > 1 && this.props.posters.indexOf(Meteor.userId()) != -1) {
+      } else if (this.matchable()) {
           var matchString = "m\u2661tch!"
           return (
             <div className="match" onClick={this.showChat}>{matchString}</div>
@@ -64,8 +71,7 @@ ChatAtom = React.createClass({
       }
     }
   },
-  render: function() {
-    // TODO! Use this.props.chatRoom.history or this.state.data?
+  render: function() {// TODO! Use this.props.chatRoom.history or this.state.data?
     // TODO correct the error when this.props.chatRoom is undefined.
     return  (
         <div className="chatContent">
