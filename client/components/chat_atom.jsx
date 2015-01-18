@@ -21,7 +21,7 @@ ChatAtom = React.createClass({
     Meteor.call("updateChat", options);
   },
   showChat: function() {
-    this.setState({"isChat": true});
+    this.setState({"hasClickedMatch": true});
   },
   likePost: function() {
     console.log("hey you liked it")
@@ -51,11 +51,11 @@ ChatAtom = React.createClass({
   },
   createCard: function() {
     if (this.props.chatRoom) {
-      if (this.state.isChat || this.chattable()) {
+      if (this.state.hasClickedMatch || this.chattable()) {
         return (
           <div className="chatBox">
             <ChatList data={this.props.chatRoom.history} />
-            <ChatForm onCommentSubmit={this.updateChat} />
+            <ChatForm shouldFocus={this.state.hasClickedMatch} onCommentSubmit={this.updateChat} />
           </div>
         );
       } else if (this.matchable()) {
@@ -173,6 +173,11 @@ var ChatForm = React.createClass({
   mixins: [ReactMeteor.Mixin],
   getMeteorState: function() {
     return this.state;
+  },
+  componentDidMount: function() {
+    if (this.props.shouldFocus) {
+      this.refs.text.getDOMNode().focus();
+    }
   },
   handleSubmit: function(event) {
     if (event.keyCode === 13) {
