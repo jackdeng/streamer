@@ -59,7 +59,7 @@ ChatAtom = React.createClass({
           </div>
         );
       } else if (this.matchable()) {
-          var matchString = "m\u2661tch!"
+          var matchString = "\u2661" + " (" + this.props.posters.length + ")";
           return (
             <div className="match" onClick={this.showChat}>{matchString}</div>
           );
