@@ -102,9 +102,21 @@ var ChatList = React.createClass({
 
     return chatEntries;
   },
+  componentDidMount: function() {
+    this.setScrollHeight();
+  },
+  componentDidUpdate: function() {
+    // TODO: is there a better way to permanently set the scrol to the bottom than to call in both lifecyle methods?
+    // didMount for first render, didUpdate for subsequent render
+    this.setScrollHeight();
+  },
+  setScrollHeight: function() {
+    var dom = this.refs.chatList.getDOMNode()
+    dom.scrollTop = dom.scrollHeight;
+  },
   render: function() {
     return (
-      <div className="chatList">
+      <div ref="chatList" className="chatList">
         {this.getChatEntries()}
       </div>
     );
