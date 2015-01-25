@@ -45,17 +45,29 @@ Views.Login = function() {
 Views.Bookmarks = function() {
   if (Meteor.user()) {
     urlsAndDates = Meteor.user().bookmarks;
-    // get unique bookmarks only. Currently, we store one entry in this array
-    // for every time a user bookmarks something.
-    // TODO: ensure uniqueness in a more elegant way
-    var urlsOnly = _.uniq(urlsAndDates.map(function(item) {
-      return item["url"];
-    }));
-    // this will make a lot of database calls if a user has stored a lot of bookmarks.
-    // TODO: find better way to maintain order of returned bookmarks
-    posts = urlsOnly.map(function(url) {
-      return Posts.findOne({url: url});
-    }).reverse();
-    displayStream(posts);
+    //TODO: why does urlsAndDates sometimes return undefined?
+    if (urlsAndDates) {
+		// get unique bookmarks only. Currently, we store one entry in this array
+	    // for every time a user bookmarks something.
+	    // TODO: ensure uniqueness in a more elegant way
+	    // The most recent is pushed to the end, so we reverse the bookmarks
+	    var urlsByMostRecent = urlsAndDates.map(function(item) {
+	    	return item["url"];
+	    }).reverse();
+	    var urlsOnly = _.uniq(urlsByMostRecent);
+	    // this will make a lot of database calls if a user has stored a lot of bookmarks.
+	    // TODO: find better way to maintain order of returned bookmarks
+	    // TODO: Mapping from url to Posts sometimes does not return a valid post.
+	    // TODO: sanitize data so that we can use map instead of forEach to check for validity
+	    var userPosts = [];
+	    urlsOnly.forEach(function(url) {
+			var post = Posts.findOne({url: url});
+			if (post) {
+				userPosts.push(post);
+			}
+		});
+
+	    displayStream(userPosts);
+    }
   }
 }

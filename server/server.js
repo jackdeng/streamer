@@ -34,9 +34,6 @@ Accounts.onCreateUser(function(options, user) {
 
 /** Routes **/
 Router.route('/visit', {"where": "server"}).post(function() {
-  console.log('***!!! PLUGIN hit POST route!');
-  console.log("data header is : " + JSON.stringify(this.request.headers));
-  console.log("data body is : " + JSON.stringify(this.request.body));
   var data = this.request.body;
 
   // update Posts
@@ -82,7 +79,6 @@ Router.route('/visit', {"where": "server"}).post(function() {
       }
     });
   }
-
 });
 
 var updateMetadata = function(data) {
@@ -100,9 +96,9 @@ var updateMetadata = function(data) {
       return;
     }
 
-    var results = response.data;
+    var metadata = response.data || {};
     var query = {"url": data.url}
-    Posts.update(query, {$set: {"metadata": results}});
+    Posts.update(query, {$set: {"metadata": metadata}});
   });
 }
 
