@@ -49,6 +49,7 @@ Views.Bookmarks = function() {
     if (urlsAndDates) {
 		// get unique bookmarks only. Currently, we store one entry in this array
 	    // for every time a user bookmarks something.
+	    // TODO: find better way to maintain order of returned bookmarks. Right now we rely on the fact the most recent is pushed to the end of bookmarks.
 	    // TODO: ensure uniqueness in a more elegant way
 	    // The most recent is pushed to the end, so we reverse the bookmarks
 	    var urlsByMostRecent = urlsAndDates.map(function(item) {
@@ -56,7 +57,6 @@ Views.Bookmarks = function() {
 	    }).reverse();
 	    var urlsOnly = _.uniq(urlsByMostRecent);
 	    // this will make a lot of database calls if a user has stored a lot of bookmarks.
-	    // TODO: find better way to maintain order of returned bookmarks
 	    // TODO: Mapping from url to Posts sometimes does not return a valid post.
 	    // TODO: sanitize data so that we can use map instead of forEach to check for validity
 	    var userPosts = [];
