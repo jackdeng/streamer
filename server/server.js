@@ -129,5 +129,15 @@ Meteor.methods({
         return;
       }
     });
+  },
+  "getProfileMap": function(arrayOfUsers) {
+    var profileMap = {}
+    for (var i = 0; i < arrayOfUsers.length; i++) {
+      var userId = arrayOfUsers[i];
+      //TODO why findOne but not find?
+      var user = Meteor.users.findOne({"_id": userId});
+      profileMap[userId] = user.profile;
+    }
+    return profileMap;
   }
 });

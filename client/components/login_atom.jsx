@@ -14,7 +14,6 @@ LoginAtom = React.createClass({
 	},
 	submitForm: function() {
 		var loginInfo = this.refs.loginForm.getInformation();
-
 		if (this.state.register) {
 			// register
 			Accounts.createUser(loginInfo);
@@ -57,7 +56,8 @@ var LoginCard = React.createClass({
 			var profile =  {
 				"fullname": this.refs.name.getFullName(),
 				"firstName": this.refs.name.getFirstName(),
-				"lastName": this.refs.name.getLastName()
+				"lastName": this.refs.name.getLastName(),
+				"color": Please.make_color({"saturation": 0.6})
 			};
 
 			info.profile = profile;

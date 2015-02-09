@@ -24,7 +24,6 @@ ChatAtom = React.createClass({
     this.setState({"hasClickedMatch": true});
   },
   likePost: function() {
-    console.log("hey you liked it")
     // call server to save post
     options = {
       userId: Meteor.userId(),
@@ -54,7 +53,7 @@ ChatAtom = React.createClass({
       if (this.state.hasClickedMatch || this.chattable()) {
         return (
           <div className="chatBox">
-            <ChatList data={this.props.chatRoom.history} />
+            <ChatList data={this.props.chatRoom.history} posters={this.props.posters} />
             <ChatForm shouldFocus={this.state.hasClickedMatch} onCommentSubmit={this.updateChat} />
           </div>
         );
@@ -71,7 +70,8 @@ ChatAtom = React.createClass({
       }
     }
   },
-  render: function() {// TODO! Use this.props.chatRoom.history or this.state.data?
+  render: function() {
+    // TODO! Use this.props.chatRoom.history or this.state.data?
     // TODO correct the error when this.props.chatRoom is undefined.
     return  (
         <div className="chatContent">
@@ -89,21 +89,30 @@ var ChatList = React.createClass({
   getChatEntries: function() {
     //TODO: refactor hack to use user_color and user_name from user profile
     //refactor chat to have messages by _id.
-    var colorDictionary = {};
+    var that = this;
     var chatEntries = this.props.data.map(function(entry) {
-      if (!colorDictionary[entry.user]) {
-        colorDictionary[entry.user] = Please.make_color({"saturation": 0.6});
+      var userId = entry.userId;
+      var userColor = "2b2b2b"
+      if (that.state.profileMap) {
+        userColor = that.state.profileMap[userId].color;
       }
 
       return (
-        <ChatEntry user={entry.user} message={entry.message} color={colorDictionary[entry.user]}></ChatEntry>
+        <ChatEntry user={entry.user} message={entry.message} color={userColor}></ChatEntry>
       );
     });
 
     return chatEntries;
   },
+  setProfileMap: function() {
+    var that = this;
+    Meteor.call("getProfileMap", this.props.posters, function(err, result) {
+      that.setState({"profileMap": result});
+    });
+  },
   componentDidMount: function() {
     this.setScrollHeight();
+    this.setProfileMap();
   },
   componentDidUpdate: function() {
     // TODO: is there a better way to permanently set the scrol to the bottom than to call in both lifecyle methods?
@@ -197,7 +206,7 @@ var ChatForm = React.createClass({
       event.preventDefault();
 
       var user = Meteor.user();
-      var userId = user._id;
+      var userId = Meteor.userId();
       var userProfile = user.profile;
       var author = userProfile.fullname;
 
@@ -207,6 +216,7 @@ var ChatForm = React.createClass({
       }
       // TODO: send request to server.
       var comment = {
+        "userId": userId,
         "user" : author,
         "message" : text
       }

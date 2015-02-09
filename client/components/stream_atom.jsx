@@ -21,7 +21,6 @@ StreamAtom = React.createClass({
 		query = {
 			"url": url
 		}
-
 		return Chat.findOne(query);
 	},
 	createCards: function() {
