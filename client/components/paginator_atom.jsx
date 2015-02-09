@@ -6,7 +6,7 @@ PaginatorAtom = React.createClass({
 		return this.state;
 	},
 	showMore: function() {
-		var POST_INCREMENT = 5;
+		var POST_INCREMENT = 15;
 		Session.set("postLimit", Session.get("postLimit") + POST_INCREMENT);
 	},
 	render: function() {
