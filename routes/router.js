@@ -4,7 +4,7 @@ Router.route('/', function () {
 
 	Tracker.autorun(function() {
 		if (Meteor.loggingIn() || Meteor.user()) {
-			Router.go('/near');
+			Router.go('/far');
 		} else {
 			Routes.login();
 		}
@@ -19,7 +19,7 @@ Router.route('/login', function () {
 	Routes.login();
 });
 
-Router.route('/near', function() {
+Router.route('/far', function() {
 	Tracker.autorun(function() {
 		if (Meteor.loggingIn() || Meteor.user()) {
 			Routes.main();

@@ -26,7 +26,7 @@ var WhereAtom = React.createClass({
 		return (
 			<div className="whereAmI">
 				<HereAtom route={this.props.route}  />
-				<NearAtom route={this.props.route} />
+				<FarAtom route={this.props.route} />
 			</div>
 		);
 	}
@@ -86,17 +86,17 @@ var UserAtom = React.createClass({
 	}
 })
 
-var NearAtom = React.createClass({
+var FarAtom = React.createClass({
 	mixins: [ReactMeteor.Mixin],
 	getMeteorState: function() {
 		return this.state;
 	},
 	goToWhere: function() {
-		Router.go("/near");
+		Router.go("/far");
 	},
 	createClassname: function() {
-		var className = "where near";
-		if (this.props.route.indexOf("near") != -1) {
+		var className = "where far";
+		if (this.props.route.indexOf("far") != -1) {
 			className += " selected"
 		}
 		return className;
@@ -104,7 +104,7 @@ var NearAtom = React.createClass({
 	render: function() {
 		return (
 			<div className={this.createClassname()} onClick={this.goToWhere}>
-				<div className="badge">#near</div>
+				<div className="badge">#far</div>
 			</div>
 		);
 	}

@@ -78,18 +78,18 @@ body {
 	position: fixed;
 	top: -50px;
 	padding: 10px;
-	padding-bottom: 20px;
 	text-align: center;
 	/* top to bottom */
 	color: white;
-	width: 13px;
+	width: 12px;
 	word-wrap: break-word;
 	border-bottom-right-radius: 8px;
 	border-bottom-left-radius: 8px;
 	cursor: pointer;
 	transition: top 0.75s;
+	height: 120px;
 
-	&.near {
+	&.far {
 		background: #1BB240;
 		right: 50px;
 	}
