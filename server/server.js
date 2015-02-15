@@ -33,7 +33,12 @@ Accounts.onCreateUser(function(options, user) {
 });
 
 /** Routes **/
-Router.route('/visit', {"where": "server"}).post(function() {
+Router.route("/comment", {"where": "server"}).post(function() {
+  var data = this.request.body;
+  console.log("catching tag comment from bookmarks: " + JSON.stringify(data));
+});
+
+Router.route("/visit", {"where": "server"}).post(function() {
   var data = this.request.body;
 
   // update Posts
