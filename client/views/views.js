@@ -4,11 +4,13 @@ var displayStream = function(postsToShow) {
 	Tracker.autorun(function() {
 		var data = postsToShow.map(function(item) {
 			var metadata = item.metadata || [];
+			var comments = item.comments || [];
 			return {
 				"title": item.title,
 				"url": item.url,
 				"user": item.user,
 				"posters": item.posters,
+				"comment": comments.pop(),
 				"description": metadata.description || "",
 				"images": metadata.images || [],
 				"media": metadata.media || {},

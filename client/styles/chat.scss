@@ -16,6 +16,18 @@ $slightPink: #FF5A65;
 	width: 230px;
 }
 
+.conversations {
+	width: 232px; /* account for borders */
+	text-align: center;
+	border-top: 1px rgba(88, 88, 88, 0.25) solid;
+	word-wrap: break-word;
+	background: gold;
+
+	.comment {
+		padding: 10px;
+	}
+}
+
 .chatList {
 	padding: 10px;
 	border-bottom: 1px rgba(88, 88, 88, 0.25) solid;

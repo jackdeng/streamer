@@ -36,6 +36,23 @@ Accounts.onCreateUser(function(options, user) {
 Router.route("/comment", {"where": "server"}).post(function() {
   var data = this.request.body;
   console.log("catching tag comment from bookmarks: " + JSON.stringify(data));
+
+  var query = {"url": data.url};
+  var comment = {
+    "userId": data.userId,
+    "comment": data.comment
+  }
+  var modifier = {
+    "$addToSet": {
+      "comments": comment
+    }
+  }
+
+  Posts.update(query, modifier, function(err, doc) {
+    if (err) {
+      console.log("error in updating bookmark comment");
+    }
+  });
 });
 
 Router.route("/visit", {"where": "server"}).post(function() {
@@ -43,6 +60,10 @@ Router.route("/visit", {"where": "server"}).post(function() {
 
   // update Posts
   var query = {"url": data.url};
+  var comment = {
+    "userId": data.userId,
+    "comment": data.comment
+  }
   var modifier = {
     "$set": {
       "url": data.url,
@@ -50,7 +71,8 @@ Router.route("/visit", {"where": "server"}).post(function() {
       "title": data.title
     },
     "$addToSet": {
-      "posters": data.userid
+      "posters": data.userId,
+      "comments": comment
     }
   }
 

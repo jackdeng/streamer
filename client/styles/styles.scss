@@ -163,7 +163,7 @@ body {
 	padding: 15px 30px;
 	background: $slightPink;
 	color: white;
-	width: 170px;
+	width: 172px; /*2px account for border on comment and chatlist */
 	cursor: pointer;
 	text-align: center;
 	white-space: nowrap;

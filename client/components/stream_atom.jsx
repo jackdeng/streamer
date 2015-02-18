@@ -26,10 +26,11 @@ StreamAtom = React.createClass({
 	createCards: function() {
 		var cards = this.state.data.map(function(data) {
 			var chatRoom = this.getChatRoom(data.url);
+			console.log("COMMENT: " + JSON.stringify(data.comment));
 			return (
 				<div className="sleeve">
 					<EmbelishCard data={data}></EmbelishCard>
-					<ChatAtom url={data.url} chatRoom={chatRoom} posters={data.posters}></ChatAtom>
+					<ChatAtom comment={data.comment} url={data.url} chatRoom={chatRoom} posters={data.posters}></ChatAtom>
 				</div>
 			)
 		}, this);

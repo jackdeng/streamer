@@ -143,7 +143,7 @@ var CardTitle = React.createClass({
 	getTitleText: function() {
 		// check to see if the title would be a generic extension.
 		var title = this.props.title;
-		var extensionMap = [".jpg", ".png", ".gif"];
+		var extensionMap = [".jpg", ".png", ".gif", "jpeg"];
 		var isExtension = false;
 
 		if (!title) {

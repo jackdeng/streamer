@@ -74,9 +74,26 @@ ChatAtom = React.createClass({
     // TODO! Use this.props.chatRoom.history or this.state.data?
     // TODO correct the error when this.props.chatRoom is undefined.
     return  (
-        <div className="chatContent">
-          {this.createCard()}
+      <div className="chatContent">
+        <div className="conversations">
+          <CommentAtom data={this.props.comment} />
         </div>
+        {this.createCard()}
+      </div>
+    );
+  }
+});
+
+var CommentAtom = React.createClass({
+  mixins: [ReactMeteor.Mixin],
+  getMeteorState: function() {
+    return this.state;
+  },
+  render: function() {
+    return (
+      <div className="comment">
+        {this.props.data.comment}
+      </div>
     );
   }
 });
