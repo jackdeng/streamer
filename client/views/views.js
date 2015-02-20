@@ -1,5 +1,16 @@
 Views = {};
 
+var getLastValidComment = function(comments) {
+	var end = comments.length - 1;
+	while (end >= 0) {
+		var current = comments[end];
+		if (current.comment || (end === 0)) {
+			return current;
+		}
+		end--;
+	}
+}
+
 var displayStream = function(postsToShow) {
 	Tracker.autorun(function() {
 		var data = postsToShow.map(function(item) {
@@ -10,7 +21,7 @@ var displayStream = function(postsToShow) {
 				"url": item.url,
 				"user": item.user,
 				"posters": item.posters,
-				"comment": comments.pop(),
+				"comment": getLastValidComment(comments),
 				"description": metadata.description || "",
 				"images": metadata.images || [],
 				"media": metadata.media || {},
