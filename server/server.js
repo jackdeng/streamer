@@ -90,7 +90,7 @@ Router.route("/visit", {"where": "server"}).post(function() {
   });
 
   // update Users
-  Meteor.users.update({ _id: data.userid }, {
+  Meteor.users.update({ _id: data.userId }, {
     "$push": {"bookmarks": {"date": data.date, "url": data.url}}
   });
 
