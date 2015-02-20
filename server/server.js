@@ -35,6 +35,7 @@ Accounts.onCreateUser(function(options, user) {
 /** Routes **/
 Router.route("/comment", {"where": "server"}).post(function() {
   var data = this.request.body;
+  var res = this.response;
   console.log("catching tag comment from bookmarks: " + JSON.stringify(data));
 
   var query = {"url": data.url};
@@ -51,6 +52,9 @@ Router.route("/comment", {"where": "server"}).post(function() {
   Posts.update(query, modifier, function(err, doc) {
     if (err) {
       console.log("error in updating bookmark comment");
+      res.end(JSON.stringify({"success": false}));
+    } else {
+      res.end(JSON.stringify({"success": true}));
     }
   });
 });
