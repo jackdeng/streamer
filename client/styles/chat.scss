@@ -19,12 +19,12 @@ $slightPink: #FF5A65;
 .conversations {
 	width: 232px; /* account for borders */
 	text-align: center;
-	border-top: 1px rgba(88, 88, 88, 0.25) solid;
 	word-wrap: break-word;
-	background: gold;
 
 	.comment {
+		border-top: 1px rgba(88, 88, 88, 0.25) solid;
 		padding: 10px;
+		background: gold;
 	}
 }
 
