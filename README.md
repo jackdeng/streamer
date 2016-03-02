@@ -1,5 +1,8 @@
 # Streamer - crowd surf news stream.
 
+## What is it? 
+Streamer was an bookmark app that lets users save materials they find online to read later while connecting users who have saved the same links. It was built using the first versions of Meteor and cobbled with unsupported React.
+
 ## Screenshot of App before end of development
 ![image](http://i.imgur.com/MzNWFuH.png)
 
