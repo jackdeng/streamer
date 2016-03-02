@@ -1,7 +1,7 @@
 # Streamer - crowd surf news stream.
 
 ## Screenshot of App before end of development
-![Alt text](http://imgur.com/MzNWFuH)
+![image](http://imgur.com/MzNWFuH)
 
 ## Installation
 
