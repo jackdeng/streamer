@@ -1,5 +1,8 @@
 # Streamer - crowd surf news stream.
 
+## Screenshot of App before end of development
+![Alt text](http://imgur.com/MzNWFuH)
+
 ## Installation
 
 1. Set up meteor: https://www.meteor.com/install
